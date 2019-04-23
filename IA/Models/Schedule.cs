@@ -1,4 +1,4 @@
-namespace RealEstate.Models
+namespace IA.Models
 {
     using System;
     using System.Collections.Generic;
@@ -7,25 +7,20 @@ namespace RealEstate.Models
     using System.Data.Entity.Spatial;
 
     [Table("Schedule")]
-    public partial class Schedule
+    public partial class schedule
     {
         [Key]
-        public int S_ID { get; set; }
-
-        public int P_ID { get; set; }
-
-        [Column(TypeName = "date")]
+        public int Id { get; set; }
+        
         public DateTime Start { get; set; }
 
-        [Column(TypeName = "date")]
         public DateTime End { get; set; }
 
         public int Progress { get; set; }
-
-        public int team_ID { get; set; }
-
-        public virtual Project Project { get; set; }
-
-        public virtual Team Team { get; set; }
+        
+        public int pId { get; set; }
+        public virtual projects Project { get; set; }
+        public int teamId { get; set; }
+        public virtual team Team { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-namespace RealEstate.Models
+namespace IA.Models
 {
     using System;
     using System.Collections.Generic;
@@ -7,30 +7,18 @@ namespace RealEstate.Models
     using System.Data.Entity.Spatial;
 
     [Table("Team")]
-    public partial class Team
+    public partial class team
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Team()
-        {
-            Projects = new HashSet<Project>();
-            Schedules = new HashSet<Schedule>();
-            Team_member = new HashSet<Team_member>();
-        }
-
         [Key]
-        public int T_ID { get; set; }
+        public int Id { get; set; }
 
-        public int PM_ID { get; set; }
+        public int pmId{ get; set; }
+        public virtual users user { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Project> Projects { get; set; }
+        public virtual ICollection<schedule> Schedules { get; set; }
+        
+        public virtual ICollection<teamMember> Team_member { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Schedule> Schedules { get; set; }
-
-        public virtual user user { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Team_member> Team_member { get; set; }
+        public virtual ICollection<projects> Projects { get; set; }
     }
 }

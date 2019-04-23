@@ -1,4 +1,4 @@
-namespace RealEstate.Models
+namespace IA.Models
 {
     using System;
     using System.Collections.Generic;
@@ -7,17 +7,14 @@ namespace RealEstate.Models
     using System.Data.Entity.Spatial;
 
     [Table("Report")]
-    public partial class Report
+    public partial class report
     {
         [Key]
-        public int R_ID { get; set; }
+        public int Id { get; set; }
+        
+        public string rdesc { get; set; }
 
-        public int? R_user { get; set; }
-
-        [Column(TypeName = "text")]
-        [Required]
-        public string desc { get; set; }
-
-        public virtual user user { get; set; }
+        public int? rUser { get; set; }
+        public virtual users user { get; set; }
     }
 }

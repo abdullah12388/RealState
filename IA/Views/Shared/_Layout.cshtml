@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IA.Models.users
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -25,7 +26,7 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-    
+
     <div class="site-wrap">
 
         <div class="site-mobile-menu site-navbar-target">
@@ -55,14 +56,29 @@
                                     <li><a href="#home-section" class="nav-link active">Home</a></li>
                                     <li><a href="#about-section" class="nav-link">About</a></li>
                                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
-                                    <li>
-                                        <button class="nav-link" style="background-color: Transparent;
+
+                                    @if (Session["ID"] != null)
+                                    {
+                                        <li><a href="#">@Html.ActionLink("Profile", "Profile" ) </a></li>
+                                        
+                                        <li><a >@Html.ActionLink("Logout", "Logout") </a></li>
+                                        <li><a class="nav-link">    Welcome  @Session["ID"] </a></li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <button class="nav-link" style="background-color: Transparent;
                                                                         outline: none;
                                                                         border: none;
-                                                                        font-weight: 1000;">
-                                            Rigester
-                                        </button>
-                                    </li>
+                                                                        font-weight: 900;">
+                                                Rigester
+                                            </button>
+                                        </li>
+
+                                    }
+
+
+
                                 </ul>
                                 <div class="underline"></div>
                             </nav>
@@ -117,18 +133,6 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="mb-4">
-                            <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
-                            <form action="#" method="post" class="footer-subscribe">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary text-black" type="button" id="button-addon2">Send</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
                         <div class="">
                             <h2 class="footer-heading mb-4">Follow Us</h2>
                             <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
@@ -136,8 +140,6 @@
                             <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
                             <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="row pt-5 mt-5 text-center">
@@ -151,14 +153,16 @@
                             </p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </footer>
     </div>
-
     <div class="overlay1">
     </div>
+
+   
+    @if (Session["ID"] == null)
+    {
     <div class="main-popup">
         <div class="popup-header">
             <div id="popup-close-button"><a href="#"></a></div>
@@ -167,37 +171,84 @@
                 <li><a href="#" id="register">Register</a></li>
             </ul>
         </div>
-
         <div class="popup-content">
-            <form action="#" class="sign-in">
-                <label for="email">Email:</label>
-                <input type="text" id="email">
-                <label for="password">Password:</label>
-                <input type="password" id="password">
+
+
+
+
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "sign-in", role = "form" }))
+            {
+
+
+                @Html.Label("email-register", "Email:")
+                @Html.TextBoxFor(x => x.email, new { required = "required" })
+
+
+                @Html.Label("password-register", "Password:")
+                @Html.TextBoxFor(x => x.password, new { @class = "form-control", placeholder = "Password", @type = "password", required = "required" })
+
                 <p class="check-mark">
                     <input type="checkbox" id="remember-me">
                     <label for="remember-me">Remember me</label>
                 </p>
-                <input type="submit" id="submit" value="Submit">
-            </form>
 
-            <form action="#" class="register">
-                <label for="email-register">Email:</label>
-                <input type="text" id="email-register">
-                <label for="password-register">Password:</label>
-                <input type="password" id="password-register">
-                <label for="password-confirmation">Confirm Password:</label>
-                <input type="password-confirmation" id="password-confirmation">
-                <p class="check-mark">
-                    <input type="checkbox" id="accept-terms">
-                    <label for="accept-terms">I agree to the <a href="#">Terms</a></label>
-                </p>
+                <input type="submit" id="submit" value="Login">
+
+            }
+
+
+            
+
+            @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "register", role = "form" }))
+            {
+                @Html.Label("first_name", "First Name:")
+                @Html.TextBoxFor(x => x.firstName, new { required = "required" })
+
+                @Html.Label("last_name", "Last Name:")
+                @Html.TextBoxFor(x => x.lastName, new { required = "required" })
+
+                @Html.Label("email-register", "Email:")
+                @Html.TextBoxFor(x => x.email, new { required = "required" })
+
+
+                @Html.Label("password-register", "Password:")
+                @Html.TextBoxFor(x => x.password, new { @class = "form-control", placeholder = "Password", @type = "password", required = "required" })
+
+                @Html.Label("password-confirmation", "Confirm Password:")
+                @Html.TextBoxFor(x => x.ConfirmPassowrd, new { @class = "form-control", placeholder = "Password", @type = "password", required = "required" })
+
+                @Html.Label("t", "Role:")
+                <select name="type">
+                    <option disabled>Select Your Role</option>
+                    @foreach (var item in ViewBag.User_Types)
+                    {
+                        <option value="@item.userTypeId">@item.type</option>
+
+                    }
+                </select>
+
+                @Html.Label("address", "Address:")
+
+                @Html.TextBoxFor(x => x.address, new { required = "required" })
+
+                @Html.Label("phone-number", "Phone Number:")
+                @Html.TextBoxFor(x => x.phone, new { required = "required" })
+
+                @Html.Label("jop-description", "Jop Description:")
+                @Html.TextBoxFor(x => x.jobDescription)
+
+                @Html.Label("qualification", "Qualification:")
+                @Html.TextBoxFor(x => x.qualification)
+
+                @Html.Label("exprience", "Exprience:")
+                @Html.TextBoxFor(x => x.experience)
+
                 <input type="submit" id="submit" value="Create Account">
-            </form>
+            }
         </div>
-
+        
     </div>
-
+    }
     <script src="~/Scripts/js/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/js/jquery-migrate-3.0.1.min.js"></script>
     <script src="~/Scripts/js/jquery-ui.js"></script>
@@ -212,7 +263,7 @@
     <script src="~/Scripts/js/jquery.fancybox.min.js"></script>
     <script src="~/Scripts/js/jquery.sticky.js"></script>
     <script src="~/Scripts/js/main.js"></script>
-    
+
 
 </body>
 </html>

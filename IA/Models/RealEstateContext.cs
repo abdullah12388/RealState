@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace RealEstate.Models
+namespace IA.Models
 {
     public class RealEstateContext : DbContext
     {
@@ -19,8 +19,16 @@ namespace RealEstate.Models
         {
         }
 
-        public System.Data.Entity.DbSet<RealEstate.Models.user> users { get; set; }
+        public System.Data.Entity.DbSet<IA.Models.users> users { get; set; }
 
-        public System.Data.Entity.DbSet<RealEstate.Models.User_Type> User_Type { get; set; }
+        public System.Data.Entity.DbSet<IA.Models.userType> userType { get; set; }
+
+        public System.Data.Entity.DbSet<IA.Models.projects> project{ get; set; }
+        public System.Data.Entity.DbSet<IA.Models.report> report{ get; set; }
+        public System.Data.Entity.DbSet<IA.Models.Req_proj> Req_proj{ get; set; }
+        public System.Data.Entity.DbSet<IA.Models.schedule> schedule { get; set; }
+        public System.Data.Entity.DbSet<IA.Models.teamMember> teamMember{ get; set; }
+        public System.Data.Entity.DbSet<IA.Models.team> team{ get; set; }
+
     }
 }

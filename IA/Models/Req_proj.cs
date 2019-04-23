@@ -1,4 +1,4 @@
-namespace RealEstate.Models
+namespace IA.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,16 +9,13 @@ namespace RealEstate.Models
     public partial class Req_proj
     {
         [Key]
-        public int R_ID { get; set; }
+        public int Id { get; set; }
+        public int? rStatue { get; set; }
 
-        public int R_PM { get; set; }
+        public int rProject { get; set; }
+        public virtual projects Project { get; set; }
 
-        public int R_PROJ { get; set; }
-
-        public int? R_statue { get; set; }
-
-        public virtual Project Project { get; set; }
-
-        public virtual user user { get; set; }
+        public int rPM { get; set; }
+        public virtual users user { get; set; }
     }
 }

@@ -1748,7 +1748,7 @@ h1, h2, h3, h4, h5,
   visibility: hidden;
   transform: translateY(-20px);
   transition: all .5s ease;
-  /*overflow: hidden;*/
+ /* overflow: auto;*/
 }
 
 .main-popup.visible {
@@ -1773,7 +1773,9 @@ h1, h2, h3, h4, h5,
   height: 62px;
   width: 100%;
 }
-
+.popup-content{
+    height: 520px;
+}
 #popup-close-button a {
   position: absolute;
   right: 10px;
@@ -1847,6 +1849,7 @@ h1, h2, h3, h4, h5,
   background-color: #000;
   color: #fff;
   border-radius: 0 5px 0 0;
+    
 }
 
 #register.active {
@@ -1854,10 +1857,7 @@ h1, h2, h3, h4, h5,
   background-color: transparent;
 }
 
-.popup-content {
-  height: 510px;
-  
-}
+
 
 form.sign-in {
   position: relative; 
@@ -1911,8 +1911,9 @@ input#submit {
 }
 
 form.register {
+  padding-top: 20px;
   position: relative; 
-  top: -280px;
+  top: -340px;
   left: 0;
   font-size: 1em;
   opacity: 0;
@@ -1921,6 +1922,8 @@ form.register {
   -moz-transition: all .35s;
   -o-transition: all .35s;
   transition: all .35s;
+    overflow: scroll;
+    height: 500px;
 }
 
 form.register.move-left {
@@ -1939,7 +1942,17 @@ form.register input {
   outline: none;
   border: none;
 }
-
+form.register select {
+  border-radius: 5px;
+  width: 90%;
+  height: 40px;
+  margin: 5px 5% 15px 5%;
+  padding: 10px;
+  font-size: 1em;
+  color: #000;
+  outline: none;
+  border: none;
+}
 p.check-mark {
   position: relative;
   left: 50%;
@@ -1969,4 +1982,11 @@ p.check-mark input {
 
 p.check-mark label {
   margin-left: 5px;
+}
+.field-validation-error
+{
+    font-size: 1.1em;
+    color: #fb0606;
+    margin-left: 23px;
+    display: block;
 }
