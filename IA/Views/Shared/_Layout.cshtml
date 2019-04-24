@@ -59,10 +59,10 @@
 
                                     @if (Session["ID"] != null)
                                     {
-                                        <li><a href="#">@Html.ActionLink("Profile", "Profile" ) </a></li>
+                                        <li><a href="#">@Html.ActionLink("Profile", "Index", "Profile") </a></li>
                                         
                                         <li><a >@Html.ActionLink("Logout", "Logout") </a></li>
-                                        <li><a class="nav-link">    Welcome  @Session["ID"] </a></li>
+                                        <li><a class="nav-link">    Welcome  @Html.DisplayFor(model => model.firstName) </a></li>
                                     }
                                     else
                                     {

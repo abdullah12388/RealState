@@ -57,7 +57,7 @@
                                     <li><a href="#about-section" class="nav-link">About</a></li>
                                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
                                     <li><a>@Html.ActionLink("Logout", "Logout", "Home") </a></li>
-                                    <li><a class="nav-link">    Welcome  @Session["ID"] </a></li>
+                                    <li><a class="nav-link">    Welcome  @Html.DisplayFor(model => model.firstName) </a></li>
                                 </ul>
                                 <div class="underline"></div>
                             </nav>
@@ -86,225 +86,96 @@
         <div class="site-section" id="property-details">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-5">
-                        <div>
-                            <h3 class="text-black mb-4">Contact Agent</h3>
-                            <div>
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h3 class="text-black mb-4">Contact Agent</h3>
                                 <img src="../../@Html.DisplayFor(model => model.photo)" alt="Image" class="w-25 mb-3 rounded-circle">
                                 <h4 class="text-black">@Html.DisplayFor(model => model.firstName)</h4>
                                 <p class="text-muted mb-4">Real Estate Agent</p>
                                 <p><a href="#" class="btn btn-primary btn-sm">Contact Agent</a></p>
-
-                                <dl class="dl-horizontal">
-
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.email)
-                                    </dt>
-
-                                    <dd>
-                                        @Html.DisplayFor(model => model.email)
-                                    </dd>
-
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.address)
-                                    </dt>
-
-                                    <dd>
-                                        @Html.DisplayFor(model => model.address)
-                                    </dd>
-
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.phone)
-                                    </dt>
-
-                                    <dd>
-                                        @Html.DisplayFor(model => model.phone)
-                                    </dd>
-
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.jobDescription)
-                                    </dt>
-
-                                    <dd>
-                                        @Html.DisplayFor(model => model.jobDescription)
-                                    </dd>
-
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.qualification)
-                                    </dt>
-
-                                    <dd>
-                                        @Html.DisplayFor(model => model.qualification)
-                                    </dd>
-
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.experience)
-                                    </dt>
-
-                                    <dd>
-                                        @Html.DisplayFor(model => model.experience)
-                                    </dd>
-
-                                </dl>
-
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.email)</h5>
+                                        <label>@Html.DisplayFor(model => model.email)</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.address)</h5>
+                                        <label>@Html.DisplayFor(model => model.address)</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.phone)</h5>
+                                        <label>@Html.DisplayFor(model => model.phone)</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.jobDescription)</h5>
+                                        <label>@Html.DisplayFor(model => model.jobDescription)</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.qualification)</h5>
+                                        <label>@Html.DisplayFor(model => model.qualification)</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.experience)</h5>
+                                        <label>@Html.DisplayFor(model => model.experience)</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-7 order-2 order-md-1">
-                        @RenderBody()
-                        <div class="property horizontal d-flex">
-
-                            <div class="mr-3 img-entry">
-                                <a href="property-single.html"><img src="../../Content/images/property_1-sm.jpg" alt="Image" class="img-fluid"></a>
-                            </div>
-                            <div class="prop-details p-3">
-                                <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
-                                <div class="mb-2 d-flex justify-content-between">
-                                    <span class="w border-r">6 beds</span>
-                                    <span class="w border-r">4 baths</span>
-                                    <span class="w">4,250 sqft.</span>
+                        <div class="row">
+                            @RenderBody()
+                            <div class="property horizontal d-flex">
+                                <div class="mr-3 img-entry">
+                                    <a href="property-single.html"><img src="../../Content/images/property_1-sm.jpg" alt="Image" class="img-fluid"></a>
                                 </div>
-                                <div>480 12th, Unit 14, San Francisco, CA</div>
+                                <div class="prop-details p-3">
+                                    <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
+                                    <div class="mb-2 d-flex justify-content-between">
+                                        <span class="w border-r">6 beds</span>
+                                        <span class="w border-r">4 baths</span>
+                                        <span class="w">4,250 sqft.</span>
+                                    </div>
+                                    <div>480 12th, Unit 14, San Francisco, CA</div>
+                                </div>
+                            </div>
+                            <div class="property horizontal d-flex">
+                                <div class="mr-3 img-entry">
+                                    <a href="property-single.html"><img src="../../Content/images/property_1-sm.jpg" alt="Image" class="img-fluid"></a>
+                                </div>
+                                <div class="prop-details p-3">
+                                    <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
+                                    <div class="mb-2 d-flex justify-content-between">
+                                        <span class="w border-r">6 beds</span>
+                                        <span class="w border-r">4 baths</span>
+                                        <span class="w">4,250 sqft.</span>
+                                    </div>
+                                    <div>480 12th, Unit 14, San Francisco, CA</div>
+                                </div>
+                            </div>
+                            <div class="property horizontal d-flex">
+                                <div class="mr-3 img-entry">
+                                    <a href="property-single.html"><img src="../../Content/images/property_1-sm.jpg" alt="Image" class="img-fluid"></a>
+                                </div>
+                                <div class="prop-details p-3">
+                                    <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
+                                    <div class="mb-2 d-flex justify-content-between">
+                                        <span class="w border-r">6 beds</span>
+                                        <span class="w border-r">4 baths</span>
+                                        <span class="w">4,250 sqft.</span>
+                                    </div>
+                                    <div>480 12th, Unit 14, San Francisco, CA</div>
+                                </div>
                             </div>
                         </div>
-
-                        @*<div class="property horizontal d-flex">
-                            <div class="mr-3 img-entry">
-                                <a href="property-single.html"><img src="../../Content/images/property_2-sm.jpg" alt="Image" class="img-fluid"></a>
-                            </div>
-                            <div class="prop-details p-3">
-                                <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
-                                <div class="mb-2 d-flex justify-content-between">
-                                    <span class="w border-r">6 beds</span>
-                                    <span class="w border-r">4 baths</span>
-                                    <span class="w">4,250 sqft.</span>
-                                </div>
-                                <div>480 12th, Unit 14, San Francisco, CA</div>
-                            </div>
-                        </div>
-
-                        <div class="property horizontal d-flex">
-                            <div class="mr-3 img-entry">
-                                <a href="property-single.html"><img src="../../Content/images/property_3-sm.jpg" alt="Image" class="img-fluid"></a>
-                            </div>
-                            <div class="prop-details p-3">
-                                <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
-                                <div class="mb-2 d-flex justify-content-between">
-                                    <span class="w border-r">6 beds</span>
-                                    <span class="w border-r">4 baths</span>
-                                    <span class="w">4,250 sqft.</span>
-                                </div>
-                                <div>480 12th, Unit 14, San Francisco, CA</div>
-                            </div>
-                        </div>
-
-                        <div class="property horizontal d-flex">
-                            <div class="mr-3 img-entry">
-                                <a href="property-single.html"><img src="../../Content/images/property_4-sm.jpg" alt="Image" class="img-fluid"></a>
-                            </div>
-                            <div class="prop-details p-3">
-                                <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
-                                <div class="mb-2 d-flex justify-content-between">
-                                    <span class="w border-r">6 beds</span>
-                                    <span class="w border-r">4 baths</span>
-                                    <span class="w">4,250 sqft.</span>
-                                </div>
-                                <div>480 12th, Unit 14, San Francisco, CA</div>
-                            </div>
-                        </div>
-
-                        <div class="property horizontal d-flex">
-                            <div class="mr-3 img-entry">
-                                <a href="property-single.html"><img src="../../Content/images/property_5-sm.jpg" alt="Image" class="img-fluid"></a>
-                            </div>
-                            <div class="prop-details p-3">
-                                <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
-                                <div class="mb-2 d-flex justify-content-between">
-                                    <span class="w border-r">6 beds</span>
-                                    <span class="w border-r">4 baths</span>
-                                    <span class="w">4,250 sqft.</span>
-                                </div>
-                                <div>480 12th, Unit 14, San Francisco, CA</div>
-                            </div>
-                        </div>
-
-                        <div class="property horizontal d-flex">
-                            <div class="mr-3 img-entry">
-                                <a href="property-single.html"><img src="../../Content/images/property_1-sm.jpg" alt="Image" class="img-fluid"></a>
-                            </div>
-                            <div class="prop-details p-3">
-                                <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
-                                <div class="mb-2 d-flex justify-content-between">
-                                    <span class="w border-r">6 beds</span>
-                                    <span class="w border-r">4 baths</span>
-                                    <span class="w">4,250 sqft.</span>
-                                </div>
-                                <div>480 12th, Unit 14, San Francisco, CA</div>
-                            </div>
-                        </div>
-
-                        <div class="property horizontal d-flex">
-                            <div class="mr-3 img-entry">
-                                <a href="property-single.html"><img src="../../Content/images/property_2-sm.jpg" alt="Image" class="img-fluid"></a>
-                            </div>
-                            <div class="prop-details p-3">
-                                <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
-                                <div class="mb-2 d-flex justify-content-between">
-                                    <span class="w border-r">6 beds</span>
-                                    <span class="w border-r">4 baths</span>
-                                    <span class="w">4,250 sqft.</span>
-                                </div>
-                                <div>480 12th, Unit 14, San Francisco, CA</div>
-                            </div>
-                        </div>
-
-                        <div class="property horizontal d-flex">
-                            <div class="mr-3 img-entry">
-                                <a href="property-single.html"><img src="../../Content/images/property_3-sm.jpg" alt="Image" class="img-fluid"></a>
-                            </div>
-                            <div class="prop-details p-3">
-                                <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
-                                <div class="mb-2 d-flex justify-content-between">
-                                    <span class="w border-r">6 beds</span>
-                                    <span class="w border-r">4 baths</span>
-                                    <span class="w">4,250 sqft.</span>
-                                </div>
-                                <div>480 12th, Unit 14, San Francisco, CA</div>
-                            </div>
-                        </div>
-
-                        <div class="property horizontal d-flex">
-                            <div class="mr-3 img-entry">
-                                <a href="property-single.html"><img src="../../Content/images/property_4-sm.jpg" alt="Image" class="img-fluid"></a>
-                            </div>
-                            <div class="prop-details p-3">
-                                <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
-                                <div class="mb-2 d-flex justify-content-between">
-                                    <span class="w border-r">6 beds</span>
-                                    <span class="w border-r">4 baths</span>
-                                    <span class="w">4,250 sqft.</span>
-                                </div>
-                                <div>480 12th, Unit 14, San Francisco, CA</div>
-                            </div>
-                        </div>
-
-                        <div class="property horizontal d-flex">
-                            <div class="mr-3 img-entry">
-                                <a href="property-single.html"><img src="../../Content/images/property_5-sm.jpg" alt="Image" class="img-fluid"></a>
-                            </div>
-                            <div class="prop-details p-3">
-                                <div><a href="property-single.html"><strong class="price">$3,400,000</strong></a></div>
-                                <div class="mb-2 d-flex justify-content-between">
-                                    <span class="w border-r">6 beds</span>
-                                    <span class="w border-r">4 baths</span>
-                                    <span class="w">4,250 sqft.</span>
-                                </div>
-                                <div>480 12th, Unit 14, San Francisco, CA</div>
-                            </div>
-                        </div>*@
                     </div>
                 </div>
-                @*<div class="row mt-4">
+                <div class="row mt-4">
                     <div class="col-md-9 ml-auto">
                         <div class="custom-pagination text-center">
                             <span>1</span>
@@ -314,7 +185,7 @@
                             <a href="#">7</a>
                         </div>
                     </div>
-                </div>*@
+                </div>
             </div>
         </div>
 
