@@ -245,6 +245,10 @@
 
                 @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "sign-in", role = "form" }))
                 {
+                    if (TempData["Message"] != null)
+                    {
+                        <span style="color:red;padding-left:20px;display:block">@TempData["Message"].ToString()</span>
+                    }
                     @Html.Label("email-register", "Email:")
                     @Html.TextBoxFor(x => x.email, new { required = "required" })
                     @Html.Label("password-register", "Password:")
@@ -252,33 +256,35 @@
                     <input type="submit" id="submit" value="Login">
                 }
 
-                @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "register", role = "form" }))
+                @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "register", role = "form" , enctype = "multipart/form-data" }))
                 {
                     @Html.Label("first_name", "First Name:")
-                    @Html.TextBoxFor(x => x.firstName, new {  @maxlength = "50"})
+                    @Html.TextBoxFor(x => x.firstName, new { required = "required", @maxlength = "50"})
                     @Html.ValidationMessageFor(x=>x.firstName);
 
                     @Html.Label("last_name", "Last Name:")
-                    @Html.TextBoxFor(x => x.lastName, new {  maxlength = "50" })
+                    @Html.TextBoxFor(x => x.lastName, new { required = "required", maxlength = "50" })
                     @Html.ValidationMessageFor(x => x.lastName);
 
                     @Html.Label("email-register", "Email:")
-                    @Html.TextBoxFor(x => x.email, new {  @type = "email"})
+                    @Html.TextBoxFor(x => x.email, new { required = "required", @type = "email"})
                     @Html.ValidationMessageFor(x => x.email);
 
                     @Html.Label("password-register", "Password:")
-                    @Html.TextBoxFor(x => x.password, new {  @type = "password" })
+                    @Html.TextBoxFor(x => x.password, new { required = "required", @type = "password" })
                     @Html.ValidationMessageFor(x => x.password);
 
                     @Html.Label("password-confirmation", "Confirm Password:")
-                    @Html.TextBoxFor(x => x.ConfirmPassowrd, new {  @type = "password" })
+                    @Html.TextBoxFor(x => x.ConfirmPassowrd, new { required = "required", @type = "password" })
                     @Html.ValidationMessageFor(x => x.ConfirmPassowrd);
 
                     @Html.Label("t", "Role:")
+
+                    
                     <select name="type">
-                        <option disabled selected>Select Your Role</option>
+                        <!--<option disabled selected>Select Your Role</option>-->
                         @foreach (var item in ViewBag.User_Types)
-                    {
+                        {
                             <option value="@item.userTypeId">@item.type</option>
 
                         }
@@ -299,6 +305,9 @@
 
                     @Html.Label("exprience", "Exprience:")
                     @Html.TextBoxFor(x => x.experience , new {  maxlength = "50" })
+                    
+                    @Html.Label("photoFile", "Photo:")
+                    <input type="file" name="photoFile" required />
 
                     <input type="submit" id="submit" value="Create Account">
                 }

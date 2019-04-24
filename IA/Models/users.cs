@@ -5,15 +5,15 @@ namespace IA.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     public partial class users
     {
         [Key]
         public int Id { get; set; }
-
         
+        [Required(ErrorMessage = "Required")]
         [StringLength(50)]
-        [Required(ErrorMessage ="please enter el zft ")]
         public string firstName { get; set; }
 
         [Required(ErrorMessage = "Required")]
@@ -34,19 +34,23 @@ namespace IA.Models
         [CompareAttribute("password", ErrorMessage = "Password doesn't match.")]
         public string ConfirmPassowrd { get; set; }
 
-
         [Required(ErrorMessage = "Required")]
         [StringLength(50)]
         public string address { get; set; }
-
-        
+        [Required(ErrorMessage = "Required")]
         public string phone { get; set; }
         public string jobDescription { get; set; }
         public string qualification { get; set; }
         public string experience { get; set; }
 
-        
-        public int? userTypeId { get; set; }
+
+        public string photo { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase photoFile { get; set; }
+
+
+        //Forign Key
+        public int userTypeId { get; set; }
         public virtual userType type { get; set; }
 
         public virtual ICollection<projects> pPM { get; set; }
@@ -56,7 +60,7 @@ namespace IA.Models
         public virtual ICollection<report> Reports { get; set; }
         
         public virtual ICollection<Req_proj> Req_proj { get; set; }
-        // good
+        
         public virtual ICollection<team> Teams { get; set; }
 
         public virtual ICollection<teamMember> Team_member { get; set; }

@@ -11,11 +11,11 @@ namespace IA.Models
         [Key]
         public int Id { get; set; }
         public int? rStatue { get; set; }
-
+        [ForeignKey("Project")]
         public int rProject { get; set; }
         public virtual projects Project { get; set; }
-
-        public int rPM { get; set; }
+        [ForeignKey("user")]
+        public int? rPM { get; set; }
         public virtual users user { get; set; }
     }
 }
