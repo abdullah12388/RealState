@@ -35,11 +35,13 @@ namespace IA.Controllers
                 string FileExtension = Path.GetExtension(usr.photoFile.FileName);
 
                 //Add Current Date To Attached File Name  
-                FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
-
+                Random rnd = new Random();
+                int r = rnd.Next();
+                FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + r.ToString() + FileName.Trim() + FileExtension;
                 
-                usr.photo = Path.Combine(Server.MapPath("~/Content/Images/"), FileName);
-                usr.photoFile.SaveAs(usr.photo);
+                string path = Path.Combine(Server.MapPath("~/Content/Images/"), FileName);
+                usr.photo = "Content/Images/" + FileName;
+                usr.photoFile.SaveAs(path);
                 db.users.Add(usr);
                 db.SaveChanges();
                 Session["ID"] = usr.Id;
@@ -83,6 +85,13 @@ namespace IA.Controllers
         {
             Session.RemoveAll();
             return RedirectToAction("Index");
+        }
+        public ActionResult test()
+        {
+            var pro = db.project.Where(x => x.Id.Equals(2)).FirstOrDefault();
+            int pmid = (int) pro.pmId;
+            var u = db.users.Where(y => y.Id.Equals(pmid)).FirstOrDefault();
+            return Content(u.firstName.ToString());
         }
     }
 }

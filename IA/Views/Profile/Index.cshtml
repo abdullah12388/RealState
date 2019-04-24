@@ -1,7 +1,14 @@
 ﻿
 @{
+    if (Session["type"].Equals(1))
+    {
+        Layout = "~/Views/Shared/_AdminProfile.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_profile.cshtml";
+    }
     ViewBag.Title = "Profile";
-    Layout = "~/Views/Shared/_profile.cshtml";
 }
 
 <h2>Profile</h2>

@@ -17,10 +17,10 @@ namespace IA.Models
         public string pArea { get; set; }
         public int pStatus { get; set; }
         [ForeignKey("Pm")]
-        public int? pPM { get; set; }
+        public int? pmId { get; set; }
         public virtual users Pm{ get; set; }
         [ForeignKey("Customer")]
-        public int pCustomer { get; set; }
+        public int customerId { get; set; }
         public virtual users Customer { get; set; }
         [ForeignKey("Team")]
         public int? pTeam { get; set; }
