@@ -17,10 +17,21 @@ namespace IA.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            users us = new users();
-            ViewBag.User_Types = db.userType.Where(x => x.userTypeId > 1).ToList();
-            
-            return View(us);
+            if (Session["ID"] != null)
+            {
+                if (Session["type"].Equals(2))
+                {
+                    return View("Customer");
+                }
+                return View("Users");
+            }
+            else
+            {
+                users us = new users();
+                ViewBag.User_Types = db.userType.Where(x => x.userTypeId > 1).ToList();
+
+                return View(us);
+            }
         }
 
         [HttpPost]
@@ -29,6 +40,8 @@ namespace IA.Controllers
             try
             {
                 usr.userTypeId = int.Parse(type);
+
+
                 string FileName = Path.GetFileNameWithoutExtension(usr.photoFile.FileName);
 
                 //To Get File Extension  
@@ -41,9 +54,11 @@ namespace IA.Controllers
                 
                 string path = Path.Combine(Server.MapPath("~/Content/Images/"), FileName);
                 usr.photo = "Content/Images/" + FileName;
-                usr.photoFile.SaveAs(path);
+
+
                 db.users.Add(usr);
                 db.SaveChanges();
+                usr.photoFile.SaveAs(path);
                 Session["ID"] = usr.Id;
                 Session["type"] = usr.userTypeId;
                 return RedirectToAction("Index");
@@ -54,7 +69,6 @@ namespace IA.Controllers
                 return View("Index", usr);
             }
 }
-
 
         [HttpPost]
         public ActionResult Login(users usr)
