@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
@@ -156,20 +156,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904241708334_abdullah.cs" />
-    <Compile Include="Migrations\201904241708334_abdullah.Designer.cs">
-      <DependentUpon>201904241708334_abdullah.cs</DependentUpon>
+    <Compile Include="Migrations\201904251938161_abdullah.cs" />
+    <Compile Include="Migrations\201904251938161_abdullah.Designer.cs">
+      <DependentUpon>201904251938161_abdullah.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\projects.cs" />
     <Compile Include="Models\RealEstateContext.cs" />
     <Compile Include="Models\report.cs" />
     <Compile Include="Models\Req_proj.cs" />
+    <Compile Include="Models\Req_Team.cs" />
     <Compile Include="Models\schedule.cs" />
     <Compile Include="Models\team.cs" />
     <Compile Include="Models\teamMember.cs" />
     <Compile Include="Models\users.cs" />
     <Compile Include="Models\userType.cs" />
+    <Compile Include="Models\user_req_team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,9 +192,8 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Home\Customer.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-
     <Content Include="Views\Profile\admin.cshtml" />
-
+    <Content Include="Views\Profile\teamLeader.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -204,8 +205,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904241708334_abdullah.resx">
-      <DependentUpon>201904241708334_abdullah.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904251938161_abdullah.resx">
+      <DependentUpon>201904251938161_abdullah.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

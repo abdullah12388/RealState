@@ -213,9 +213,6 @@ E:\Kolya\RealState\IA\bin\System.Web.Mvc.xml
 E:\Kolya\RealState\IA\obj\Debug\IA.csprojResolveAssemblyReference.cache
 E:\Kolya\RealState\IA\obj\Debug\IA.dll
 E:\Kolya\RealState\IA\obj\Debug\IA.pdb
-E:\Kolya\RealState\IA\obj\Debug\IA.Migrations.abdullah.resources
-E:\Kolya\RealState\IA\obj\Debug\IA.csproj.GenerateResource.Cache
-
 C:\Users\Ahmed\Desktop\RealState-master\IA\bin\roslyn\csc.exe
 C:\Users\Ahmed\Desktop\RealState-master\IA\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Ahmed\Desktop\RealState-master\IA\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -259,4 +256,5 @@ C:\Users\Ahmed\Desktop\RealState-master\IA\obj\Debug\IA.Migrations.abdullah.reso
 C:\Users\Ahmed\Desktop\RealState-master\IA\obj\Debug\IA.csproj.GenerateResource.Cache
 C:\Users\Ahmed\Desktop\RealState-master\IA\obj\Debug\IA.dll
 C:\Users\Ahmed\Desktop\RealState-master\IA\obj\Debug\IA.pdb
-
+E:\Kolya\RealState\IA\obj\Debug\IA.Migrations.abdullah.resources
+E:\Kolya\RealState\IA\obj\Debug\IA.csproj.GenerateResource.Cache

@@ -60,7 +60,11 @@ namespace IA.Models
         public virtual ICollection<report> Reports { get; set; }
         
         public virtual ICollection<Req_proj> Req_proj { get; set; }
-        
+
+        public virtual ICollection<Req_Team> rTL { get; set; }
+
+        public virtual ICollection<Req_Team> rPM { get; set; }
+
         public virtual ICollection<team> Teams { get; set; }
 
         public virtual ICollection<teamMember> Team_member { get; set; }

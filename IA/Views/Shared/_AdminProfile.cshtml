@@ -1,5 +1,3 @@
-@model IA.Models.users
-
 
 @{Html.RenderPartial("Head");}
 
@@ -11,40 +9,40 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <h3 class="text-black mb-4">Contact Agent</h3>
-                                <img src="../../@Html.DisplayFor(model => model.photo)" alt="Image" class="w-25 mb-3 rounded-circle">
-                                <h4 class="text-black">@Html.DisplayFor(model => model.firstName)</h4>
+                                <img src="../../@ViewBag.user.photo" alt="Image" class="w-25 mb-3 rounded-circle">
+                                <h4 class="text-black">@ViewBag.user.firstName</h4>
                                 <p class="text-muted mb-4">Real Estate Agent</p>
                                 <p><a href="#" class="btn btn-primary btn-sm">Contact Agent</a></p>
                             </div>
                             <div class="col-sm-8">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.email)</h5>
-                                        <label>@Html.DisplayFor(model => model.email)</label>
+                                        <h5 style="font-weight: bold;">Email</h5>
+                                        <label>@ViewBag.user.email</label>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.address)</h5>
-                                        <label>@Html.DisplayFor(model => model.address)</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.phone)</h5>
-                                        <label>@Html.DisplayFor(model => model.phone)</label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.jobDescription)</h5>
-                                        <label>@Html.DisplayFor(model => model.jobDescription)</label>
+                                        <h5 style="font-weight: bold;">Address</h5>
+                                        <label>@ViewBag.user.address</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.qualification)</h5>
-                                        <label>@Html.DisplayFor(model => model.qualification)</label>
+                                        <h5 style="font-weight: bold;">Phone</h5>
+                                        <label>@ViewBag.user.phone</label>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h5 style="font-weight: bold;">@Html.DisplayNameFor(model => model.experience)</h5>
-                                        <label>@Html.DisplayFor(model => model.experience)</label>
+                                        <h5 style="font-weight: bold;">Job Description</h5>
+                                        <label>@ViewBag.user.jobDescription</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 style="font-weight: bold;">Qualification</h5>
+                                        <label>@ViewBag.user.qualification</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 style="font-weight: bold;">Experience</h5>
+                                        <label>@ViewBag.user.experience</label>
                                     </div>
                                 </div>
                             </div>
@@ -52,10 +50,9 @@
 
                         @RenderBody()
                        
-
                     </div>
                 </div>
-                <div class="row mt-4">
+                @*<div class="row mt-4">
                     <div class="col-md-9 ml-auto">
                         <div class="custom-pagination text-center">
                             <span>1</span>
@@ -65,7 +62,7 @@
                             <a href="#">7</a>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
 
