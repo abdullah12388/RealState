@@ -40,8 +40,13 @@ namespace IA.Controllers
             try
             {
                 usr.userTypeId = int.Parse(type);
-
-
+                var user = db.users.Where(u => u.email.Equals(usr.email)).FirstOrDefault();
+                if (user != null)
+                {
+                    TempData["email"] = "This Email Is Exisit. Please try again";
+                    ViewBag.User_Types = db.userType.Where(x => x.userTypeId > 1).ToList();
+                    return View("Index", usr);
+                }
                 string FileName = Path.GetFileNameWithoutExtension(usr.photoFile.FileName);
 
                 //To Get File Extension  
@@ -51,11 +56,9 @@ namespace IA.Controllers
                 Random rnd = new Random();
                 int r = rnd.Next();
                 FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + r.ToString() + FileName.Trim() + FileExtension;
-                
+
                 string path = Path.Combine(Server.MapPath("~/Content/Images/"), FileName);
                 usr.photo = "Content/Images/" + FileName;
-
-
                 db.users.Add(usr);
                 db.SaveChanges();
                 usr.photoFile.SaveAs(path);
@@ -68,7 +71,7 @@ namespace IA.Controllers
                 ViewBag.User_Types = db.userType.Where(x => x.userTypeId > 1).ToList();
                 return View("Index", usr);
             }
-}
+        }
 
         [HttpPost]
         public ActionResult Login(users usr)
@@ -86,7 +89,7 @@ namespace IA.Controllers
                 {
                     TempData["Message"] = "Wrong email or password. Please try again";
                     return RedirectToAction("Index");
-                } 
+                }
             }
             catch
             {
@@ -103,7 +106,7 @@ namespace IA.Controllers
         public ActionResult test()
         {
             var pro = db.project.Where(x => x.Id.Equals(2)).FirstOrDefault();
-            int pmid = (int) pro.pmId;
+            int pmid = (int)pro.pmId;
             var u = db.users.Where(y => y.Id.Equals(pmid)).FirstOrDefault();
             return Content(u.firstName.ToString());
         }
