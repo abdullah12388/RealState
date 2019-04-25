@@ -156,9 +156,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904232304016_abdullah.cs" />
-    <Compile Include="Migrations\201904232304016_abdullah.Designer.cs">
-      <DependentUpon>201904232304016_abdullah.cs</DependentUpon>
+    <Compile Include="Migrations\201904241708334_abdullah.cs" />
+    <Compile Include="Migrations\201904241708334_abdullah.Designer.cs">
+      <DependentUpon>201904241708334_abdullah.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\projects.cs" />
@@ -184,7 +184,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_profile.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\Shared\_AdminProfile.cshtml" />
+    <Content Include="Views\Shared\Head.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Home\Customer.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Profile\admin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -196,8 +202,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904232304016_abdullah.resx">
-      <DependentUpon>201904232304016_abdullah.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904241708334_abdullah.resx">
+      <DependentUpon>201904241708334_abdullah.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

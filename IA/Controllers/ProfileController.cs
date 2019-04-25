@@ -18,6 +18,10 @@ namespace IA.Controllers
             if (Session["ID"] != null)
             {
                 users users = db.users.Find(Session["ID"]);
+                if (users.userTypeId.Equals(1) || users.userTypeId.Equals(3) || users.userTypeId.Equals(4))
+                {
+                    return View("admin", users);
+                }
                 return View(users);
             }
             else

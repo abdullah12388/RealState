@@ -13,7 +13,7 @@ namespace IA.Models
         public int Id { get; set; }
         
         public string rdesc { get; set; }
-
+        [ForeignKey("user")]
         public int? rUser { get; set; }
         public virtual users user { get; set; }
     }

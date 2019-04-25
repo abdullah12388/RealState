@@ -9,9 +9,10 @@ namespace IA.Models
     public partial class teamMember
     {
         public int Id { get; set; }
-
+        [ForeignKey("Team")]
         public int teamId { get; set; }
         public virtual team Team { get; set; }
+        [ForeignKey("user")]
         public int userId { get; set; }
         public virtual users user { get; set; }
         public int? Statue { get; set; }

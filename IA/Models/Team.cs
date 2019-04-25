@@ -11,8 +11,9 @@ namespace IA.Models
     {
         [Key]
         public int Id { get; set; }
-
-        public int pmId{ get; set; }
+        
+        [ForeignKey("user")]
+        public int? pmId{ get; set; }
         public virtual users user { get; set; }
 
         public virtual ICollection<schedule> Schedules { get; set; }

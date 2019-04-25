@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Entity;
 using IA.Models;
 using System.Net;
+using System.IO;
 
 namespace IA.Controllers
 {
@@ -16,34 +17,61 @@ namespace IA.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            users us = new users();
-            ViewBag.User_Types = db.userType.Where(x => x.userTypeId > 1).ToList();
-            
-            return View(us);
+            if (Session["ID"] != null)
+            {
+                if (Session["type"].Equals(2))
+                {
+                    return View("Customer");
+                }
+                return View("Users");
+            }
+            else
+            {
+                users us = new users();
+                ViewBag.User_Types = db.userType.Where(x => x.userTypeId > 1).ToList();
+
+                return View(us);
+            }
         }
 
         [HttpPost]
         public object Register(users usr, string type)
         {
-            
-            if (ModelState.IsValid)
+            try
             {
                 usr.userTypeId = int.Parse(type);
+                var user = db.users.Where(u => u.email.Equals(usr.email)).FirstOrDefault();
+                if (user != null)
+                {
+                    TempData["email"] = "This Email Is Exisit. Please try again";
+                    ViewBag.User_Types = db.userType.Where(x => x.userTypeId > 1).ToList();
+                    return View("Index", usr);
+                }
+                string FileName = Path.GetFileNameWithoutExtension(usr.photoFile.FileName);
+
+                //To Get File Extension  
+                string FileExtension = Path.GetExtension(usr.photoFile.FileName);
+
+                //Add Current Date To Attached File Name  
+                Random rnd = new Random();
+                int r = rnd.Next();
+                FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + r.ToString() + FileName.Trim() + FileExtension;
+                
+                string path = Path.Combine(Server.MapPath("~/Content/Images/"), FileName);
+                usr.photo = "Content/Images/" + FileName;
                 db.users.Add(usr);
                 db.SaveChanges();
+                usr.photoFile.SaveAs(path);
                 Session["ID"] = usr.Id;
                 Session["type"] = usr.userTypeId;
                 return RedirectToAction("Index");
             }
-            else
+            catch (Exception)
             {
                 ViewBag.User_Types = db.userType.Where(x => x.userTypeId > 1).ToList();
-                return View("Index",usr);
-                //return Content("Eroor");
+                return View("Index", usr);
             }
-            
-        }
-
+}
         
         [HttpPost]
         public ActionResult Login(users usr)
@@ -59,11 +87,13 @@ namespace IA.Controllers
                 }
                 else
                 {
+                    TempData["Message"] = "Wrong email or password. Please try again";
                     return RedirectToAction("Index");
                 } 
             }
             catch
             {
+                TempData["Message"] = "Wrong email or password. Please try again";
                 return RedirectToAction("Index");
             }
 
@@ -72,6 +102,13 @@ namespace IA.Controllers
         {
             Session.RemoveAll();
             return RedirectToAction("Index");
+        }
+        public ActionResult test()
+        {
+            var pro = db.project.Where(x => x.Id.Equals(2)).FirstOrDefault();
+            int pmid = (int) pro.pmId;
+            var u = db.users.Where(y => y.Id.Equals(pmid)).FirstOrDefault();
+            return Content(u.firstName.ToString());
         }
     }
 }
