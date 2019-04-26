@@ -53,17 +53,17 @@ namespace IA.Models
         public int userTypeId { get; set; }
         public virtual userType type { get; set; }
 
-        public virtual ICollection<projects> pPM { get; set; }
+        //public virtual ICollection<projects> pPM { get; set; }
 
-        public virtual ICollection<projects> pCustomer { get; set; }
+        //public virtual ICollection<projects> pCustomer { get; set; }
 
         public virtual ICollection<report> Reports { get; set; }
         
         public virtual ICollection<Req_proj> Req_proj { get; set; }
 
-        public virtual ICollection<Req_Team> rTL { get; set; }
+        //public virtual ICollection<Req_Team> rTL { get; set; }
 
-        public virtual ICollection<Req_Team> rPM { get; set; }
+        //public virtual ICollection<Req_Team> rPM { get; set; }
 
         public virtual ICollection<team> Teams { get; set; }
 

@@ -11,5 +11,7 @@ namespace IA.Models
         public List<Req_Team> rtl = new List<Req_Team>();
         public List<string> pmName = new List<string>();
         public List<string> proName = new List<string>();
+        public List<projects> curPro = new List<projects>();
+        public List<string> hisPro = new List<string>();
     }
 }
