@@ -160,6 +160,14 @@
     <Compile Include="Migrations\201904251938161_abdullah.Designer.cs">
       <DependentUpon>201904251938161_abdullah.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904260235263_abdullah1.cs" />
+    <Compile Include="Migrations\201904260235263_abdullah1.Designer.cs">
+      <DependentUpon>201904260235263_abdullah1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904260309583_abdullah2.cs" />
+    <Compile Include="Migrations\201904260309583_abdullah2.Designer.cs">
+      <DependentUpon>201904260309583_abdullah2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\projects.cs" />
     <Compile Include="Models\RealEstateContext.cs" />
@@ -207,6 +215,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201904251938161_abdullah.resx">
       <DependentUpon>201904251938161_abdullah.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904260235263_abdullah1.resx">
+      <DependentUpon>201904260235263_abdullah1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904260309583_abdullah2.resx">
+      <DependentUpon>201904260309583_abdullah2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

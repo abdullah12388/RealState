@@ -102,7 +102,7 @@ namespace IA.Controllers
         }
         public ActionResult test()
         {
-            var pro = db.project.Where(x => x.Id.Equals(2)).FirstOrDefault();
+            var pro = db.project.Where(x => x.Id.Equals(3)).FirstOrDefault();
             int pmid = (int) pro.pmId;
             var u = db.users.Where(y => y.Id.Equals(pmid)).FirstOrDefault();
             return Content(u.firstName.ToString());

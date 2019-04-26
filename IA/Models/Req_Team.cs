@@ -18,5 +18,11 @@ namespace IA.Models
         [ForeignKey("user")]
         public int? rPM { get; set; }
         public virtual users user { get; set; }
+        [ForeignKey("team")]
+        public int? tId { get; set; }
+        public virtual team team { get; set; }
+        [ForeignKey("project")]
+        public int? proId { get; set; }
+        public virtual projects project { get; set; }
     }
 }

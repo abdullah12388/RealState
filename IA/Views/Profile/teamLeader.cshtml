@@ -6,50 +6,35 @@
 }
 
 @*<h2>@Html.DisplayFor(model => model.rtl[0].rStatue)</h2>*@
+
 <div class="row">@*current and history columns*@
     <div class="col-sm-8">@*current column*@
         <h4 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Current Requests</h4>
         <div class="row" style="margin-bottom:10px">
             <div class="col-sm-4" style="margin:auto">
                 <label>Name: </label>
-
+                <label>
+                    @foreach (var item in Model.pmName)
+                    {
+                        @item
+                    }
+                </label>
             </div>
             <div class="col-sm-4" style="margin:auto">
                 <label>Project: </label>
+                <label>
+                    @foreach (var item in Model.proName)
+                    {
+                        @item
+                    }
+                </label>
             </div>
             <div class="col-sm-2">
-                <button class="btn btn-success">Accept</button>
+                <button class="btn btn-success">@Html.ActionLink("Accept", "Accept", "Profile", new { id = Model.rtl[0].Id }, null)</button>
+                
             </div>
             <div class="col-sm-2">
-                <button class="btn btn-danger">Reject</button>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom:10px">
-            <div class="col-sm-4" style="margin:auto">
-                <label>Name: </label>
-            </div>
-            <div class="col-sm-4" style="margin:auto">
-                <label>Project: </label>
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-success">Accept</button>
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-danger">Reject</button>
-            </div>
-        </div>
-        <div class="row" style="margin-bottom:10px">
-            <div class="col-sm-4" style="margin:auto">
-                <label>Name: </label>
-            </div>
-            <div class="col-sm-4" style="margin:auto">
-                <label>Project: </label>
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-success">Accept</button>
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-danger">Reject</button>
+                <button class="btn btn-danger">@Html.ActionLink("Reject", "Reject", "Profile", new { id = Model.rtl[0].Id }, null)</button>
             </div>
         </div>
     </div>

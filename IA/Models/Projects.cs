@@ -27,5 +27,6 @@ namespace IA.Models
         public virtual team Team { get; set; }
         public virtual ICollection<Req_proj> Req_proj { get; set; }
         public virtual ICollection<schedule> Schedules { get; set; }
+        public virtual ICollection<projects> proId { get; set; }
     }
 }
