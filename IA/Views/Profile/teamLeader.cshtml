@@ -5,44 +5,50 @@
     Layout = "~/Views/Shared/_AdminProfile.cshtml";
 }
 
-@*<h2>@Html.DisplayFor(model => model.rtl[0].rStatue)</h2>*@
-
 <div class="row">@*current and history columns*@
-    <div class="col-sm-8">@*current column*@
+    <div class="col-sm-8" style="height:300px;overflow:auto">
         <h4 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Current Requests</h4>
-        <div class="row" style="margin-bottom:10px">
-            <div class="col-sm-4" style="margin:auto">
-                <label>Name: </label>
-                <label>
-                    @foreach (var item in Model.pmName)
-                    {
-                        @item
-                    }
-                </label>
+        @for (int i = 0; i < Model.rtl.Count; i++)
+        {
+            <div class="row" style="margin-bottom:10px">
+                <div class="col-sm-4" style="margin:auto">
+                    <label>Name: </label>
+                    <label>
+                        @Html.DisplayFor(model => model.pmName[i])
+                    </label>
+                </div>
+                <div class="col-sm-4" style="margin:auto">
+                    <label>Project: </label>
+                    <label>
+                        @Html.DisplayFor(model => model.proName[i])
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success">@Html.ActionLink("Accept", "Accept", "Profile", new { id = Model.rtl[i].Id }, null)</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-danger">@Html.ActionLink("Reject", "Reject", "Profile", new { id = Model.rtl[i].Id }, null)</button>
+                </div>
             </div>
-            <div class="col-sm-4" style="margin:auto">
-                <label>Project: </label>
-                <label>
-                    @foreach (var item in Model.proName)
-                    {
-                        @item
-                    }
-                </label>
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-success">@Html.ActionLink("Accept", "Accept", "Profile", new { id = Model.rtl[0].Id }, null)</button>
-                
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-danger">@Html.ActionLink("Reject", "Reject", "Profile", new { id = Model.rtl[0].Id }, null)</button>
-            </div>
-        </div>
+        }
     </div>
-    <div class="col-sm-4">@*current column*@
-        <h4 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">History Projects</h4>
+    <div class="col-sm-4">
+        <h4 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Projects</h4>
         <div class="row" style="text-align:center;">
             <div class="col">
-                history
+                <h6 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Current</h6>
+                @foreach (var item in Model.curPro)
+                {
+                    <label>@item.pName</label>
+                    <button class="btn btn-danger">@Html.ActionLink("X", "Reject", "Profile", new { id = item.Id }, null)</button>
+                }
+            </div>
+            <div class="col">
+                <h6 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Delivered</h6>
+                @foreach (var item in Model.hisPro)
+                {
+                    <p>@item</p>
+                }
             </div>
         </div>
     </div>
