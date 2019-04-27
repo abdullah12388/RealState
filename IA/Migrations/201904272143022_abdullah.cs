@@ -7,10 +7,12 @@ namespace IA.Migrations
     {
         public override void Up()
         {
+            AddColumn("dbo.projects", "progress", c => c.Int(nullable: false));
         }
         
         public override void Down()
         {
+            DropColumn("dbo.projects", "progress");
         }
     }
 }

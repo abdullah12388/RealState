@@ -159,9 +159,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904272002326_abdullah.cs" />
-    <Compile Include="Migrations\201904272002326_abdullah.Designer.cs">
-      <DependentUpon>201904272002326_abdullah.cs</DependentUpon>
+    <Compile Include="Migrations\201904272143022_abdullah.cs" />
+    <Compile Include="Migrations\201904272143022_abdullah.Designer.cs">
+      <DependentUpon>201904272143022_abdullah.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminView.cs" />
@@ -217,8 +217,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904272002326_abdullah.resx">
-      <DependentUpon>201904272002326_abdullah.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904272143022_abdullah.resx">
+      <DependentUpon>201904272143022_abdullah.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
