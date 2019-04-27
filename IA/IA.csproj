@@ -168,6 +168,14 @@
     <Compile Include="Migrations\201904261733456_abdullah2.Designer.cs">
       <DependentUpon>201904261733456_abdullah2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904270250239_abdullah3.cs" />
+    <Compile Include="Migrations\201904270250239_abdullah3.Designer.cs">
+      <DependentUpon>201904270250239_abdullah3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904270418006_abdullah4.cs" />
+    <Compile Include="Migrations\201904270418006_abdullah4.Designer.cs">
+      <DependentUpon>201904270418006_abdullah4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Experience.cs" />
     <Compile Include="Models\projects.cs" />
@@ -223,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904261733456_abdullah2.resx">
       <DependentUpon>201904261733456_abdullah2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904270250239_abdullah3.resx">
+      <DependentUpon>201904270250239_abdullah3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904270418006_abdullah4.resx">
+      <DependentUpon>201904270418006_abdullah4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

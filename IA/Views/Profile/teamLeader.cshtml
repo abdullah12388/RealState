@@ -53,3 +53,54 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-8">
+        
+            @using (Html.BeginForm("ReqJE", "Profile", FormMethod.Post, new { role = "form" }))
+            {
+                <div class="row">
+                    <div class="col-sm-4">
+                        <select class="form-control" name="proId" required style="margin-bottom:10px">
+                            <option value="" selected disabled>choose project</option>
+                            @foreach (var item in Model.curPro)
+                            {
+                                <option value="@item.Id">@item.pName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control" name="jeId" required>
+                            <option value="" selected disabled>choose JE</option>
+                            @foreach (var item in Model.je)
+                            {
+                                <option value="@item.Id">@item.firstName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="submit" id="submit" value="Send Request" style="margin:auto">
+                    </div>
+                </div>
+            }
+    </div>
+    <div class="col-sm-4">
+        @using (Html.BeginForm("DelJE", "Profile", FormMethod.Post, new { role = "form" }))
+            {
+                <select class="form-control" name="proId" required style="margin-bottom:10px">
+                    <option value="" selected disabled>choose project</option>
+                    @foreach (var item in Model.curPro)
+                    {
+                        <option value="@item.Id">@item.pName</option>
+                    }
+                </select>
+                <select class="form-control" name="jeId" required>
+                    <option value="" selected disabled>choose JE</option>
+                    @foreach (var item in Model.je)
+                    {
+                        <option value="@item.Id">@item.firstName</option>
+                    }
+                </select>
+                <input type="submit" id="submit" value="Delete">
+        }
+    </div>
+</div>
