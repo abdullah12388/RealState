@@ -1,4 +1,8 @@
-@model IA.Models.users
+@if (Session["ID"] != null)
+{
+    @model IA.Models.users
+}
+
 
 
 @{Html.RenderPartial("Head");}

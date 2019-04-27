@@ -1,0 +1,81 @@
+@{Html.RenderPartial("Head");}
+
+<div class="site-section" id="property-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+
+                <div>
+                    <h3 class="text-black mb-4">Contact Agent</h3>
+
+                    <div>
+                        <img src="../../@ViewBag.user.photo" alt="Image" class="w-25 mb-3 rounded-circle">
+                        <h4 class="text-black">@ViewBag.user.firstName</h4>
+                        <p class="text-muted mb-4">Real Estate Agent</p>
+                        <p><a href="#" class="btn btn-primary btn-sm">Contact Agent</a></p>
+
+                        <dl class="dl-horizontal">
+                            <dt>
+                                <label>Email</label>
+                            </dt>
+                            <dd>
+                                @ViewBag.user.email
+                            </dd>
+                            <dt>
+                                <label>Address</label>
+                            </dt>
+                            <dd>
+                                @ViewBag.user.address
+                            </dd>
+                            <dt>
+                                <label>Phone</label>
+                            </dt>
+                            <dd>
+                                @ViewBag.user.phone
+                            </dd>
+                            <dt>
+                                <label>jobDescription</label>
+                            </dt>
+                            <dd>
+                                @ViewBag.user.jobDescription
+                            </dd>
+                            @*<dt>
+                                    @Html.DisplayNameFor(model => model.qualification)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.qualification)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.experience)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.experience)
+                                </dd>*@
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+
+        <!--<div class="row mt-4">
+            <div class="col-md-9 ml-auto">
+                <div class="custom-pagination text-center">
+                    <span>1</span>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <span class="more-page">...</span>
+                    <a href="#">7</a>
+                </div>
+            </div>
+        </div>-->
+    </div>
+</div>
+
+
+@{Html.RenderPartial("Footer");}
+

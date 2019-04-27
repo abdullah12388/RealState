@@ -150,31 +150,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904261727422_abdullah.cs" />
-    <Compile Include="Migrations\201904261727422_abdullah.Designer.cs">
-      <DependentUpon>201904261727422_abdullah.cs</DependentUpon>
+    <Compile Include="Migrations\201904270838409_Omar.cs" />
+    <Compile Include="Migrations\201904270838409_Omar.Designer.cs">
+      <DependentUpon>201904270838409_Omar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904261729415_abdullah1.cs" />
-    <Compile Include="Migrations\201904261729415_abdullah1.Designer.cs">
-      <DependentUpon>201904261729415_abdullah1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904261733456_abdullah2.cs" />
-    <Compile Include="Migrations\201904261733456_abdullah2.Designer.cs">
-      <DependentUpon>201904261733456_abdullah2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270250239_abdullah3.cs" />
-    <Compile Include="Migrations\201904270250239_abdullah3.Designer.cs">
-      <DependentUpon>201904270250239_abdullah3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270418006_abdullah4.cs" />
-    <Compile Include="Migrations\201904270418006_abdullah4.Designer.cs">
-      <DependentUpon>201904270418006_abdullah4.cs</DependentUpon>
+    <Compile Include="Migrations\201904270845540_Omar2.cs" />
+    <Compile Include="Migrations\201904270845540_Omar2.Designer.cs">
+      <DependentUpon>201904270845540_Omar2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Experience.cs" />
@@ -191,6 +180,7 @@
     <Compile Include="Models\userType.cs" />
     <Compile Include="Models\user_req_team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Customer_Assingnd_NotAssigned_Projects.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -212,6 +202,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Profile\admin.cshtml" />
     <Content Include="Views\Profile\teamLeader.cshtml" />
+    <Content Include="Views\Customer\customerProfile.cshtml" />
+    <Content Include="Views\Shared\_CustomerProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -223,20 +215,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904261727422_abdullah.resx">
-      <DependentUpon>201904261727422_abdullah.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904270838409_Omar.resx">
+      <DependentUpon>201904270838409_Omar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261729415_abdullah1.resx">
-      <DependentUpon>201904261729415_abdullah1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261733456_abdullah2.resx">
-      <DependentUpon>201904261733456_abdullah2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270250239_abdullah3.resx">
-      <DependentUpon>201904270250239_abdullah3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270418006_abdullah4.resx">
-      <DependentUpon>201904270418006_abdullah4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904270845540_Omar2.resx">
+      <DependentUpon>201904270845540_Omar2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

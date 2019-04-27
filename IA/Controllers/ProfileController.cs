@@ -22,10 +22,15 @@ namespace IA.Controllers
                 {
                     return View("admin", users);
                 }
-                else if(users.userTypeId.Equals(4))
+                else if (users.userTypeId.Equals(4))
                 {
                     user_req_team urtobject = URT(users);
                     return View("teamLeader", urtobject);
+                }
+
+                else if (Session["type"].Equals(2))
+                {
+                    return RedirectToAction("customerProfile" , "Customer");
                 }
                 return View(users);
             }
