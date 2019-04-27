@@ -90,5 +90,58 @@ namespace IA.Controllers
             }
 
         }
+
+        [HttpPost]
+        public ActionResult SaveProject(projects project)
+        {
+            if (Session["ID"] != null)
+                {
+                    if (Session["type"].Equals(2))
+                    {
+                        if (project.Id == 0)
+                        {
+                            var ID = Convert.ToInt32(Session["ID"]);
+                            project.pStatus = 0;
+                            project.customerId = ID;
+
+                            _context.project.Add(project);
+                        }
+                        else
+                        {
+
+                            var projectindb = _context.project.Single(p => p.Id == project.Id);
+                            projectindb.pName = project.pName;
+                            projectindb.pSalary = project.pSalary;
+                            projectindb.pArea = project.pArea;
+                            projectindb.pDescription = project.pDescription;
+
+                        }
+                        _context.SaveChanges();
+
+                        return RedirectToAction("customerProfile");
+                    }
+                    else
+                    {
+
+                        return HttpNotFound("Not A Customer");
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+      
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var project = _context.project.SingleOrDefault(p =>p.Id == id);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View("CustomerForm",project);
+        }
     }
 }

@@ -204,6 +204,7 @@
     <Content Include="Views\Profile\teamLeader.cshtml" />
     <Content Include="Views\Customer\customerProfile.cshtml" />
     <Content Include="Views\Shared\_CustomerProfile.cshtml" />
+    <Content Include="Views\Customer\CustomerForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

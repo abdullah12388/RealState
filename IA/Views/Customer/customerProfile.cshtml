@@ -54,6 +54,7 @@
                 </div>
                 <div>
                     @Html.ActionLink("Delete", "DeleteProject", new { id = project.Id }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Update", "Edit", new { id = project.Id }, new { @class = "btn btn-warning" })
                     <a href="#" class="btn btn-primary btn-sm">Assigen To Project Manger</a>
 
                 </div>
