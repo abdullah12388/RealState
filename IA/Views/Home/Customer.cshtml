@@ -1,10 +1,9 @@
-﻿@model IA.Models.projects
+﻿@model IA.ViewModel.ListPro
 
 @{
-    ViewBag.Title = "Customer";
-    Layout = "~/Views/Shared/_Home.cshtml";
+    Layout = null;
 }
-
+@{Html.RenderPartial("Head");}
 
 <section class="site-section bg-light bg-image" id="contact-section">
     <div class="container">
@@ -24,35 +23,36 @@
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="text-black" for="fname">Project Name</label>
-                            @Html.TextBoxFor(p => p.pName, new { @class = "form-control", @placeholder = "Enter Project Name", @required = "required", @type = "text" })
-                            @Html.ValidationMessageFor(p => p.pName)
+                            @Html.TextBoxFor(p => p.project.pName, new { @class = "form-control", @placeholder = "Enter Project Name", @required = "required", @type = "text" })
+                            @Html.ValidationMessageFor(p => p.project.pName)
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="text-black" for="subject">Description</label>
-                            @Html.TextAreaFor(p => p.pDescription, new { @class = "form-control", @placeholder = "Enter Project Description", @required = "required", @type = "text" })
-                            @Html.ValidationMessageFor(p => p.pDescription)
+                            @Html.TextAreaFor(p => p.project.pDescription, new { @class = "form-control", @placeholder = "Enter Project Description", @required = "required", @type = "text" })
+                            @Html.ValidationMessageFor(p => p.project.pDescription)
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="text-black" for="message">Area</label>
-                            @Html.TextBoxFor(p => p.pArea, new { @class = "form-control",@placeholder = "Enter Project Area", @required = "required",@type = "text"})
-                            @Html.ValidationMessageFor(p => p.pArea)                        </div>
+                            @Html.TextBoxFor(p => p.project.pArea, new { @class = "form-control", @placeholder = "Enter Project Area", @required = "required", @type = "text" })
+                            @Html.ValidationMessageFor(p => p.project.pArea)
+                        </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="text-black" for="message">Salary</label>
-                            @Html.TextBoxFor(p => p.pSalary, new { @class = "form-control", @placeholder = "Enter Project Area", @required = "required", @type = "number" })
-                            @Html.ValidationMessageFor(p => p.pSalary)
+                            @Html.TextBoxFor(p => p.project.pSalary, new { @class = "form-control", @placeholder = "Enter Project Area", @required = "required", @type = "number" })
+                            @Html.ValidationMessageFor(p => p.project.pSalary)
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12">
-                            @Html.HiddenFor(p => p.Id)
-                            <button type ="submit" class="btn btn-primary btn-md text-white"> Save </button>
+                            @Html.HiddenFor(p => p.project.Id)
+                            <button type="submit" class="btn btn-primary btn-md text-white"> Save </button>
                         </div>
                     </div>
 
@@ -61,10 +61,26 @@
             <div class="col-md-7">
                 <div class="p-4 mb-3 bg-white">
                     <p class="mb-0 font-weight-bold">All Current Not assigned projects</p>
+                    @foreach (var project in Model.ListProject)
+                    {
+                        <div class="property horizontal d-flex">
+                            <div class="prop-details p-3">
+                                <div><a href="#"><strong class="price">@project.pName</strong></a></div>
+                                <div class="">
+                                    <h3>Salary :<strong style="color: black">@project.pSalary</strong></h3>
+                                    <h3>Discription :<strong style="color: black">@project.pDescription</strong></h3>
+                                    <h3>Area :<strong style="color: black">@project.pArea</strong></h3>
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
 
                 </div>
             </div>
         </div>
     </div>
 </section>
-
+@{Html.RenderPartial("Footer");}

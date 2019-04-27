@@ -143,5 +143,61 @@ namespace IA.Controllers
 
             return View("CustomerForm",project);
         }
+
+        [HttpPost]
+        public ActionResult SaveAssignProjectManger(ProjectMangerAssign request)
+        {
+            if (Session["ID"] != null)
+            {
+                if (Session["type"].Equals(2))
+                {
+                    request.Reqpro.rStatue = 0;
+                    _context.Req_proj.Add(request.Reqpro);
+                    _context.SaveChanges();
+
+                    return RedirectToAction("customerProfile", "Customer");
+
+                }
+                else
+                {
+                    return HttpNotFound("You Dont Have Acess To this Page");
+                }
+            }
+            else
+            {
+                return HttpNotFound("Not Registerd");
+            }
+
+        }
+        public ActionResult AssignProjectManger()
+        {
+            if (Session["ID"] != null)
+            {
+                if (Session["type"].Equals(2))
+                {
+                    var ID = Convert.ToInt32(Session["ID"]);
+
+                    var ProList = _context.project.Where(p => p.customerId == ID && p.pStatus == 0);
+
+                    var Pmlist = _context.users.Where(p => p.userTypeId == 3);
+
+                    var List_Pm_pro = new ProjectMangerAssign
+                    {
+                        ProjectList = ProList,
+                        ProjectManagersList = Pmlist,
+                        Reqpro = new Req_proj()
+                    };
+                    return View("AssignProjectManger", List_Pm_pro);
+                }
+                else
+                {
+                    return HttpNotFound("You Dont Have Permision");
+                }
+            }
+            else
+            {
+                return HttpNotFound("Not Registered");
+            }
+        }
     }
 }

@@ -27,7 +27,7 @@
                     <h3>Area :<strong style="color: black">@project.pArea</strong></h3>
                 </div>
                 <div>
-                    <a href="#" class="btn btn-primary btn-sm">Assigen To Project Manger</a>
+                    @Html.ActionLink("Update", "Edit", new { id = project.Id }, new { @class = "btn btn-warning" })
 
                 </div>
             </div>
@@ -55,8 +55,7 @@
                 <div>
                     @Html.ActionLink("Delete", "DeleteProject", new { id = project.Id }, new { @class = "btn btn-danger" })
                     @Html.ActionLink("Update", "Edit", new { id = project.Id }, new { @class = "btn btn-warning" })
-                    <a href="#" class="btn btn-primary btn-sm">Assigen To Project Manger</a>
-
+                    @Html.ActionLink("Assigen To Project Manger", "AssignProjectManger",null,new {@class = "btn btn-primary btn-sm" })
                 </div>
             </div>
         </div>
