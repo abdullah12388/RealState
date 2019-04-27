@@ -1,4 +1,8 @@
-@model IA.Models.users
+@if (Session["ID"] != null)
+{
+    @model IA.Models.users
+}
+
 
 
 @{Html.RenderPartial("Head");}
@@ -7,6 +11,7 @@
     @RenderBody()
         
 @{Html.RenderPartial("Footer");}
+
 @if (Session["ID"] == null)
 {
     <div class="main-popup">

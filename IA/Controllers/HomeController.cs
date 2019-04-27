@@ -8,7 +8,7 @@ using System.Data.Entity;
 using IA.Models;
 using System.Net;
 using System.IO;
-
+using IA.ViewModel;
 namespace IA.Controllers
 {
     public class HomeController : Controller
@@ -21,7 +21,16 @@ namespace IA.Controllers
             {
                 if (Session["type"].Equals(2))
                 {
-                    return View("Customer");
+                    var ID = Convert.ToInt32(Session["ID"]);
+                    var proList_pro = new ListPro()
+                    {
+
+                        ListProject = db.project.Where(p => p.pStatus == 0),
+                        project = new projects(),
+                        user = db.users.SingleOrDefault(u => u.Id == ID)
+
+                    };
+                    return View("Customer", proList_pro);
                 }
                 return View("Users");
             }
