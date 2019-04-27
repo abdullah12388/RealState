@@ -301,12 +301,7 @@ C:\Users\Ahmed\Desktop\RealState\IA\bin\System.Web.Webpages.Razor.xml
 C:\Users\Ahmed\Desktop\RealState\IA\bin\System.Web.Helpers.xml
 C:\Users\Ahmed\Desktop\RealState\IA\bin\System.Web.Mvc.xml
 C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.csprojResolveAssemblyReference.cache
-C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.Migrations.abdullah.resources
-C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.Migrations.abdullah1.resources
-C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.Migrations.abdullah2.resources
-C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.Migrations.abdullah3.resources
-C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.Migrations.abdullah4.resources
-C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.csproj.GenerateResource.Cache
 C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.dll
 C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.pdb
-C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.Migrations.abdullah5.resources
+C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.Migrations.abdullah.resources
+C:\Users\Ahmed\Desktop\RealState\IA\obj\Debug\IA.csproj.GenerateResource.Cache
