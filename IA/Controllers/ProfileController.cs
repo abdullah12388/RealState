@@ -25,13 +25,14 @@ namespace IA.Controllers
                 }
                 else if (users.userTypeId.Equals(4))
                 {
-                    user_req_team urtobject = URT(users);
+                    user_req_team urtobject = TL(users);
                     return View("teamLeader", urtobject);
                 }
-
-                else if (Session["type"].Equals(2))
+                else if (users.userTypeId.Equals(3))
                 {
-                    return RedirectToAction("customerProfile" , "Customer");
+                    int ID = Convert.ToInt32(Session["ID"]);
+                    ViewBag.Exp = db.Experience.Where(x => x.userId == ID).ToList();
+                    return View("projectManager",users);
                 }
                 return View(users);
             }
@@ -40,22 +41,9 @@ namespace IA.Controllers
                 return HttpNotFound();
             }
     }
+        
         //team leader Functions
-        public ActionResult Accept(int id)
-        {
-            var reqTeam = db.Req_Team.Where(x => x.Id.Equals(id)).FirstOrDefault();
-            reqTeam.rStatue = 1;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        public ActionResult Reject(int id)
-        {
-            var reqTeam = db.Req_Team.Where(x => x.Id.Equals(id)).FirstOrDefault();
-            reqTeam.rStatue = 2;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        private user_req_team URT(users users) {
+        private user_req_team TL(users users) {
             user_req_team urtl = new user_req_team();
             urtl.tl = users;
             urtl.rtl = db.Req_Team.Where(x => x.rTL.Equals(users.Id) && x.rStatue == 0).ToList();
@@ -78,51 +66,19 @@ namespace IA.Controllers
                 var pro = db.project.Where(x => x.Id.Equals((int)item.proId)).FirstOrDefault();
                 urtl.hisPro.Add(pro.pName);
             }
+            int pmc = (int)Session["ID"];
             urtl.je = db.users.Where(x => x.userTypeId == 5).ToList();
+            foreach (var item in urtl.je )
+            {
+                var j = db.Req_Team.Where(x => x.rPM == pmc && x.rTL == item.Id && x.rStatue == 1).FirstOrDefault();
+                if(j != null)
+                {
+                    urtl.jepro.Add(item);
+                }
+            }
             return urtl;
         }
-        public ActionResult ReqJE(string proId , string jeId)
-        {
-            int pid = int.Parse(proId);
-            int jid = int.Parse(jeId);
-            int pm = (int)Session["ID"];
-            var req = db.Req_Team.Where(x => x.rPM == pm && x.proId == pid && x.rTL == jid).FirstOrDefault();
-            //Console.Write(req.Id);
-            if (req != null)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                int i = int.Parse(proId);
-                var p = db.project.Where(x=> x.Id == i).FirstOrDefault();
-                Req_Team rt = new Req_Team();
-                rt.rPM = (int)Session["ID"];
-                rt.rTL = int.Parse(jeId);
-                rt.tId = p.pTeam;
-                rt.proId = p.Id;
-                rt.rStatue = 0;
-                db.Req_Team.Add(rt);
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index");
-        }
-        public ActionResult DelJE(string proId, string jeId)
-        {
-            int pid = int.Parse(proId);
-            int jid = int.Parse(jeId);
-            int pm = (int)Session["ID"];
-            var req = db.Req_Team.Where(x => x.rPM == pm && x.proId == pid && x.rTL == jid && x.rStatue == 1).FirstOrDefault();
-            //Console.Write(req.Id);
-            if (req != null)
-            {
-                db.Req_Team.Remove(req);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return RedirectToAction("Index");
-        }
-
+        
         // Admin Function
         private AdminView AV(users u)
         {

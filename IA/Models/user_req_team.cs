@@ -14,5 +14,6 @@ namespace IA.Models
         public List<string> proName = new List<string>();
         public List<projects> curPro = new List<projects>();
         public List<string> hisPro = new List<string>();
+        public List<users> jepro = new List<users>();
     }
 }

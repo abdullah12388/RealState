@@ -30,8 +30,8 @@ namespace IA.Models
         public System.Data.Entity.DbSet<IA.Models.schedule> schedule { get; set; }
         public System.Data.Entity.DbSet<IA.Models.teamMember> teamMember{ get; set; }
         public System.Data.Entity.DbSet<IA.Models.team> team{ get; set; }
-        public System.Data.Entity.DbSet<IA.Models.Qualifications> Qualifications { get; set; }
         public System.Data.Entity.DbSet<IA.Models.Experience> Experience { get; set; }
+        public System.Data.Entity.DbSet<IA.Models.Qualifications> Qualifications { get; set; }
 
     }
 }
