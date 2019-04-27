@@ -156,25 +156,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904261727422_abdullah.cs" />
-    <Compile Include="Migrations\201904261727422_abdullah.Designer.cs">
-      <DependentUpon>201904261727422_abdullah.cs</DependentUpon>
+    <Compile Include="Migrations\201904270731307_ali.cs" />
+    <Compile Include="Migrations\201904270731307_ali.Designer.cs">
+      <DependentUpon>201904270731307_ali.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904261729415_abdullah1.cs" />
-    <Compile Include="Migrations\201904261729415_abdullah1.Designer.cs">
-      <DependentUpon>201904261729415_abdullah1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904261733456_abdullah2.cs" />
-    <Compile Include="Migrations\201904261733456_abdullah2.Designer.cs">
-      <DependentUpon>201904261733456_abdullah2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270250239_abdullah3.cs" />
-    <Compile Include="Migrations\201904270250239_abdullah3.Designer.cs">
-      <DependentUpon>201904270250239_abdullah3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270418006_abdullah4.cs" />
-    <Compile Include="Migrations\201904270418006_abdullah4.Designer.cs">
-      <DependentUpon>201904270418006_abdullah4.cs</DependentUpon>
+    <Compile Include="Migrations\201904270735436_CreatTablesToQualifictions.cs" />
+    <Compile Include="Migrations\201904270735436_CreatTablesToQualifictions.Designer.cs">
+      <DependentUpon>201904270735436_CreatTablesToQualifictions.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Experience.cs" />
@@ -223,20 +211,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904261727422_abdullah.resx">
-      <DependentUpon>201904261727422_abdullah.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904270731307_ali.resx">
+      <DependentUpon>201904270731307_ali.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261729415_abdullah1.resx">
-      <DependentUpon>201904261729415_abdullah1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904261733456_abdullah2.resx">
-      <DependentUpon>201904261733456_abdullah2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270250239_abdullah3.resx">
-      <DependentUpon>201904270250239_abdullah3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270418006_abdullah4.resx">
-      <DependentUpon>201904270418006_abdullah4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904270735436_CreatTablesToQualifictions.resx">
+      <DependentUpon>201904270735436_CreatTablesToQualifictions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

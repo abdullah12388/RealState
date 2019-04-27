@@ -262,3 +262,47 @@ E:\Kolya\RealState\IA\obj\Debug\IA.Migrations.abdullah1.resources
 E:\Kolya\RealState\IA\obj\Debug\IA.Migrations.abdullah2.resources
 E:\Kolya\RealState\IA\obj\Debug\IA.Migrations.abdullah3.resources
 E:\Kolya\RealState\IA\obj\Debug\IA.Migrations.abdullah4.resources
+E:\Level 4\GP\RealState\IA\bin\roslyn\csc.exe
+E:\Level 4\GP\RealState\IA\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Level 4\GP\RealState\IA\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Level 4\GP\RealState\IA\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Level 4\GP\RealState\IA\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Level 4\GP\RealState\IA\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Level 4\GP\RealState\IA\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Level 4\GP\RealState\IA\bin\roslyn\System.Collections.Immutable.dll
+E:\Level 4\GP\RealState\IA\bin\roslyn\System.Reflection.Metadata.dll
+E:\Level 4\GP\RealState\IA\bin\roslyn\vbc.exe
+E:\Level 4\GP\RealState\IA\bin\roslyn\VBCSCompiler.exe
+E:\Level 4\GP\RealState\IA\bin\roslyn\VBCSCompiler.exe.config
+E:\Level 4\GP\RealState\IA\bin\IA.dll.config
+E:\Level 4\GP\RealState\IA\bin\IA.dll
+E:\Level 4\GP\RealState\IA\bin\IA.pdb
+E:\Level 4\GP\RealState\IA\bin\EntityFramework.dll
+E:\Level 4\GP\RealState\IA\bin\EntityFramework.SqlServer.dll
+E:\Level 4\GP\RealState\IA\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Level 4\GP\RealState\IA\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Level 4\GP\RealState\IA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Level 4\GP\RealState\IA\bin\Microsoft.Web.Infrastructure.dll
+E:\Level 4\GP\RealState\IA\bin\System.Web.Helpers.dll
+E:\Level 4\GP\RealState\IA\bin\System.Web.Mvc.dll
+E:\Level 4\GP\RealState\IA\bin\System.Web.Razor.dll
+E:\Level 4\GP\RealState\IA\bin\System.Web.Webpages.Deployment.dll
+E:\Level 4\GP\RealState\IA\bin\System.Web.Webpages.dll
+E:\Level 4\GP\RealState\IA\bin\System.Web.Webpages.Razor.dll
+E:\Level 4\GP\RealState\IA\bin\EntityFramework.xml
+E:\Level 4\GP\RealState\IA\bin\EntityFramework.SqlServer.xml
+E:\Level 4\GP\RealState\IA\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Level 4\GP\RealState\IA\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Level 4\GP\RealState\IA\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Level 4\GP\RealState\IA\bin\System.Web.Razor.xml
+E:\Level 4\GP\RealState\IA\bin\System.Web.Webpages.xml
+E:\Level 4\GP\RealState\IA\bin\System.Web.Webpages.Deployment.xml
+E:\Level 4\GP\RealState\IA\bin\System.Web.Webpages.Razor.xml
+E:\Level 4\GP\RealState\IA\bin\System.Web.Helpers.xml
+E:\Level 4\GP\RealState\IA\bin\System.Web.Mvc.xml
+E:\Level 4\GP\RealState\IA\obj\Debug\IA.csprojResolveAssemblyReference.cache
+E:\Level 4\GP\RealState\IA\obj\Debug\IA.dll
+E:\Level 4\GP\RealState\IA\obj\Debug\IA.pdb
+E:\Level 4\GP\RealState\IA\obj\Debug\IA.Migrations.ali.resources
+E:\Level 4\GP\RealState\IA\obj\Debug\IA.csproj.GenerateResource.Cache
+E:\Level 4\GP\RealState\IA\obj\Debug\IA.Migrations.CreatTablesToQualifictions.resources
