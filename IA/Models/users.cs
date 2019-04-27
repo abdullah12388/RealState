@@ -40,8 +40,8 @@ namespace IA.Models
         [Required(ErrorMessage = "Required")]
         public string phone { get; set; }
         public string jobDescription { get; set; }
-        public string qualification { get; set; }
-        public string experience { get; set; }
+        //public string qualification { get; set; }
+        //public string experience { get; set; }
 
 
         public string photo { get; set; }
@@ -53,14 +53,18 @@ namespace IA.Models
         public int userTypeId { get; set; }
         public virtual userType type { get; set; }
 
-        public virtual ICollection<projects> pPM { get; set; }
+        //public virtual ICollection<projects> pPM { get; set; }
 
-        public virtual ICollection<projects> pCustomer { get; set; }
+        //public virtual ICollection<projects> pCustomer { get; set; }
 
         public virtual ICollection<report> Reports { get; set; }
         
         public virtual ICollection<Req_proj> Req_proj { get; set; }
-        
+
+        //public virtual ICollection<Req_Team> rTL { get; set; }
+
+        //public virtual ICollection<Req_Team> rPM { get; set; }
+
         public virtual ICollection<team> Teams { get; set; }
 
         public virtual ICollection<teamMember> Team_member { get; set; }

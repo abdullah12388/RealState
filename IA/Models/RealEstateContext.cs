@@ -26,6 +26,7 @@ namespace IA.Models
         public System.Data.Entity.DbSet<IA.Models.projects> project{ get; set; }
         public System.Data.Entity.DbSet<IA.Models.report> report{ get; set; }
         public System.Data.Entity.DbSet<IA.Models.Req_proj> Req_proj{ get; set; }
+        public System.Data.Entity.DbSet<IA.Models.Req_Team> Req_Team { get; set; }
         public System.Data.Entity.DbSet<IA.Models.schedule> schedule { get; set; }
         public System.Data.Entity.DbSet<IA.Models.teamMember> teamMember{ get; set; }
         public System.Data.Entity.DbSet<IA.Models.team> team{ get; set; }

@@ -21,5 +21,6 @@ namespace IA.Models
         public virtual ICollection<teamMember> Team_member { get; set; }
 
         public virtual ICollection<projects> Projects { get; set; }
+        public virtual ICollection<Req_Team> tId { get; set; }
     }
 }

@@ -1,0 +1,106 @@
+﻿@model IA.Models.user_req_team
+@{
+    ViewBag.Title = "teamLeader";
+    ViewBag.user = Model.tl;
+    Layout = "~/Views/Shared/_AdminProfile.cshtml";
+}
+
+<div class="row">@*current and history columns*@
+    <div class="col-sm-8" style="height:300px;overflow:auto">
+        <h4 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Current Requests</h4>
+        @for (int i = 0; i < Model.rtl.Count; i++)
+        {
+            <div class="row" style="margin-bottom:10px">
+                <div class="col-sm-4" style="margin:auto">
+                    <label>Name: </label>
+                    <label>
+                        @Html.DisplayFor(model => model.pmName[i])
+                    </label>
+                </div>
+                <div class="col-sm-4" style="margin:auto">
+                    <label>Project: </label>
+                    <label>
+                        @Html.DisplayFor(model => model.proName[i])
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success">@Html.ActionLink("Accept", "Accept", "Profile", new { id = Model.rtl[i].Id }, null)</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-danger">@Html.ActionLink("Reject", "Reject", "Profile", new { id = Model.rtl[i].Id }, null)</button>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-sm-4">
+        <h4 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Projects</h4>
+        <div class="row" style="text-align:center;">
+            <div class="col">
+                <h6 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Current</h6>
+                @foreach (var item in Model.curPro)
+                {
+                    <label>@item.pName</label>
+                    <button class="btn btn-danger">@Html.ActionLink("X", "Reject", "Profile", new { id = item.Id }, null)</button>
+                }
+            </div>
+            <div class="col">
+                <h6 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Delivered</h6>
+                @foreach (var item in Model.hisPro)
+                {
+                    <p>@item</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        
+            @using (Html.BeginForm("ReqJE", "Profile", FormMethod.Post, new { role = "form" }))
+            {
+                <div class="row">
+                    <div class="col-sm-4">
+                        <select class="form-control" name="proId" required style="margin-bottom:10px">
+                            <option value="" selected disabled>choose project</option>
+                            @foreach (var item in Model.curPro)
+                            {
+                                <option value="@item.Id">@item.pName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control" name="jeId" required>
+                            <option value="" selected disabled>choose JE</option>
+                            @foreach (var item in Model.je)
+                            {
+                                <option value="@item.Id">@item.firstName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="submit" id="submit" value="Send Request" style="margin:auto">
+                    </div>
+                </div>
+            }
+    </div>
+    <div class="col-sm-4">
+        @using (Html.BeginForm("DelJE", "Profile", FormMethod.Post, new { role = "form" }))
+            {
+                <select class="form-control" name="proId" required style="margin-bottom:10px">
+                    <option value="" selected disabled>choose project</option>
+                    @foreach (var item in Model.curPro)
+                    {
+                        <option value="@item.Id">@item.pName</option>
+                    }
+                </select>
+                <select class="form-control" name="jeId" required>
+                    <option value="" selected disabled>choose JE</option>
+                    @foreach (var item in Model.je)
+                    {
+                        <option value="@item.Id">@item.firstName</option>
+                    }
+                </select>
+                <input type="submit" id="submit" value="Delete">
+        }
+    </div>
+</div>
