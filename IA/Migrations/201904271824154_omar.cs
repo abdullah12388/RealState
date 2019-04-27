@@ -3,31 +3,22 @@ namespace IA.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Omar : DbMigration
+    public partial class omar : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.projects",
+                "dbo.Experiences",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        pName = c.String(),
-                        pSalary = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        pDescription = c.String(),
-                        pArea = c.String(),
-                        pStatus = c.Int(nullable: false),
-                        pmId = c.Int(),
-                        customerId = c.Int(nullable: false),
-                        pTeam = c.Int(),
+                        E_Name = c.String(),
+                        year = c.String(),
+                        userId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.users", t => t.customerId, cascadeDelete: true)
-                .ForeignKey("dbo.users", t => t.pmId)
-                .ForeignKey("dbo.Team", t => t.pTeam)
-                .Index(t => t.pmId)
-                .Index(t => t.customerId)
-                .Index(t => t.pTeam);
+                .ForeignKey("dbo.users", t => t.userId, cascadeDelete: true)
+                .Index(t => t.userId);
             
             CreateTable(
                 "dbo.users",
@@ -76,19 +67,47 @@ namespace IA.Migrations
                 .Index(t => t.rPM);
             
             CreateTable(
-                "dbo.teamMembers",
+                "dbo.projects",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        teamId = c.Int(nullable: false),
-                        userId = c.Int(nullable: false),
-                        Statue = c.Int(),
+                        pName = c.String(),
+                        pSalary = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        pDescription = c.String(),
+                        pArea = c.String(),
+                        pStatus = c.Int(nullable: false),
+                        pmId = c.Int(),
+                        customerId = c.Int(nullable: false),
+                        pTeam = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Team", t => t.teamId, cascadeDelete: true)
-                .ForeignKey("dbo.users", t => t.userId, cascadeDelete: true)
-                .Index(t => t.teamId)
-                .Index(t => t.userId);
+                .ForeignKey("dbo.users", t => t.customerId, cascadeDelete: true)
+                .ForeignKey("dbo.users", t => t.pmId)
+                .ForeignKey("dbo.Team", t => t.pTeam)
+                .Index(t => t.pmId)
+                .Index(t => t.customerId)
+                .Index(t => t.pTeam);
+            
+            CreateTable(
+                "dbo.Req_Team",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        rStatue = c.Int(),
+                        rTL = c.Int(nullable: false),
+                        rPM = c.Int(),
+                        tId = c.Int(),
+                        proId = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.projects", t => t.proId)
+                .ForeignKey("dbo.Team", t => t.tId)
+                .ForeignKey("dbo.users", t => t.rTL, cascadeDelete: true)
+                .ForeignKey("dbo.users", t => t.rPM)
+                .Index(t => t.rTL)
+                .Index(t => t.rPM)
+                .Index(t => t.tId)
+                .Index(t => t.proId);
             
             CreateTable(
                 "dbo.Team",
@@ -119,25 +138,19 @@ namespace IA.Migrations
                 .Index(t => t.teamId);
             
             CreateTable(
-                "dbo.Req_Team",
+                "dbo.teamMembers",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        rStatue = c.Int(),
-                        rTL = c.Int(nullable: false),
-                        rPM = c.Int(),
-                        tId = c.Int(),
-                        proId = c.Int(),
+                        teamId = c.Int(nullable: false),
+                        userId = c.Int(nullable: false),
+                        Statue = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.projects", t => t.proId)
-                .ForeignKey("dbo.Team", t => t.tId)
-                .ForeignKey("dbo.users", t => t.rTL, cascadeDelete: true)
-                .ForeignKey("dbo.users", t => t.rPM)
-                .Index(t => t.rTL)
-                .Index(t => t.rPM)
-                .Index(t => t.tId)
-                .Index(t => t.proId);
+                .ForeignKey("dbo.Team", t => t.teamId, cascadeDelete: true)
+                .ForeignKey("dbo.users", t => t.userId, cascadeDelete: true)
+                .Index(t => t.teamId)
+                .Index(t => t.userId);
             
             CreateTable(
                 "dbo.userTypes",
@@ -148,51 +161,70 @@ namespace IA.Migrations
                     })
                 .PrimaryKey(t => t.userTypeId);
             
+            CreateTable(
+                "dbo.Qualifications",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Q_Name = c.String(),
+                        rate = c.String(),
+                        userId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.users", t => t.userId, cascadeDelete: true)
+                .Index(t => t.userId);
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.projects", "pTeam", "dbo.Team");
-            DropForeignKey("dbo.projects", "pmId", "dbo.users");
-            DropForeignKey("dbo.projects", "customerId", "dbo.users");
+            DropForeignKey("dbo.Qualifications", "userId", "dbo.users");
+            DropForeignKey("dbo.Experiences", "userId", "dbo.users");
             DropForeignKey("dbo.users", "userTypeId", "dbo.userTypes");
-            DropForeignKey("dbo.teamMembers", "userId", "dbo.users");
-            DropForeignKey("dbo.teamMembers", "teamId", "dbo.Team");
-            DropForeignKey("dbo.Team", "pmId", "dbo.users");
+            DropForeignKey("dbo.Req_proj", "rPM", "dbo.users");
+            DropForeignKey("dbo.Req_proj", "rProject", "dbo.projects");
+            DropForeignKey("dbo.projects", "pTeam", "dbo.Team");
             DropForeignKey("dbo.Req_Team", "rPM", "dbo.users");
             DropForeignKey("dbo.Req_Team", "rTL", "dbo.users");
             DropForeignKey("dbo.Req_Team", "tId", "dbo.Team");
-            DropForeignKey("dbo.Req_Team", "proId", "dbo.projects");
+            DropForeignKey("dbo.Team", "pmId", "dbo.users");
+            DropForeignKey("dbo.teamMembers", "userId", "dbo.users");
+            DropForeignKey("dbo.teamMembers", "teamId", "dbo.Team");
             DropForeignKey("dbo.Schedule", "teamId", "dbo.Team");
             DropForeignKey("dbo.Schedule", "pId", "dbo.projects");
-            DropForeignKey("dbo.Req_proj", "rPM", "dbo.users");
-            DropForeignKey("dbo.Req_proj", "rProject", "dbo.projects");
+            DropForeignKey("dbo.Req_Team", "proId", "dbo.projects");
+            DropForeignKey("dbo.projects", "pmId", "dbo.users");
+            DropForeignKey("dbo.projects", "customerId", "dbo.users");
             DropForeignKey("dbo.Report", "rUser", "dbo.users");
+            DropIndex("dbo.Qualifications", new[] { "userId" });
+            DropIndex("dbo.teamMembers", new[] { "userId" });
+            DropIndex("dbo.teamMembers", new[] { "teamId" });
+            DropIndex("dbo.Schedule", new[] { "teamId" });
+            DropIndex("dbo.Schedule", new[] { "pId" });
+            DropIndex("dbo.Team", new[] { "pmId" });
             DropIndex("dbo.Req_Team", new[] { "proId" });
             DropIndex("dbo.Req_Team", new[] { "tId" });
             DropIndex("dbo.Req_Team", new[] { "rPM" });
             DropIndex("dbo.Req_Team", new[] { "rTL" });
-            DropIndex("dbo.Schedule", new[] { "teamId" });
-            DropIndex("dbo.Schedule", new[] { "pId" });
-            DropIndex("dbo.Team", new[] { "pmId" });
-            DropIndex("dbo.teamMembers", new[] { "userId" });
-            DropIndex("dbo.teamMembers", new[] { "teamId" });
+            DropIndex("dbo.projects", new[] { "pTeam" });
+            DropIndex("dbo.projects", new[] { "customerId" });
+            DropIndex("dbo.projects", new[] { "pmId" });
             DropIndex("dbo.Req_proj", new[] { "rPM" });
             DropIndex("dbo.Req_proj", new[] { "rProject" });
             DropIndex("dbo.Report", new[] { "rUser" });
             DropIndex("dbo.users", new[] { "userTypeId" });
-            DropIndex("dbo.projects", new[] { "pTeam" });
-            DropIndex("dbo.projects", new[] { "customerId" });
-            DropIndex("dbo.projects", new[] { "pmId" });
+            DropIndex("dbo.Experiences", new[] { "userId" });
+            DropTable("dbo.Qualifications");
             DropTable("dbo.userTypes");
-            DropTable("dbo.Req_Team");
+            DropTable("dbo.teamMembers");
             DropTable("dbo.Schedule");
             DropTable("dbo.Team");
-            DropTable("dbo.teamMembers");
+            DropTable("dbo.Req_Team");
+            DropTable("dbo.projects");
             DropTable("dbo.Req_proj");
             DropTable("dbo.Report");
             DropTable("dbo.users");
-            DropTable("dbo.projects");
+            DropTable("dbo.Experiences");
         }
     }
 }

@@ -157,13 +157,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904270838409_Omar.cs" />
-    <Compile Include="Migrations\201904270838409_Omar.Designer.cs">
-      <DependentUpon>201904270838409_Omar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904270845540_Omar2.cs" />
-    <Compile Include="Migrations\201904270845540_Omar2.Designer.cs">
-      <DependentUpon>201904270845540_Omar2.cs</DependentUpon>
+    <Compile Include="Migrations\201904271824154_omar.cs" />
+    <Compile Include="Migrations\201904271824154_omar.Designer.cs">
+      <DependentUpon>201904271824154_omar.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Experience.cs" />
@@ -219,11 +215,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904270838409_Omar.resx">
-      <DependentUpon>201904270838409_Omar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904270845540_Omar2.resx">
-      <DependentUpon>201904270845540_Omar2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904271824154_omar.resx">
+      <DependentUpon>201904271824154_omar.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
