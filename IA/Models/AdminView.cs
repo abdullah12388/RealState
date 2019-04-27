@@ -10,5 +10,6 @@ namespace IA.Models
         public users user = new users();
         public List<users> AllUsers = new List<users>();
         public List<projects> AllProjects = new List<projects>();
+
     }
 }

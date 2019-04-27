@@ -18,9 +18,10 @@ namespace IA.Controllers
             if (Session["ID"] != null)
             {
                 users users = db.users.Find(Session["ID"]);
-                if (users.userTypeId.Equals(1) || users.userTypeId.Equals(3))
+                if (users.userTypeId.Equals(1))
                 {
-                    return View("admin", users);
+                    AdminView adminView = AV(users);
+                    return View("admin", adminView);
                 }
                 else if(users.userTypeId.Equals(4))
                 {
@@ -34,6 +35,7 @@ namespace IA.Controllers
                 return HttpNotFound();
             }
     }
+        //team leader Functions
         public ActionResult Accept(int id)
         {
             var reqTeam = db.Req_Team.Where(x => x.Id.Equals(id)).FirstOrDefault();
@@ -114,6 +116,16 @@ namespace IA.Controllers
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
+        }
+
+        // Admin Function
+        private AdminView AV(users u)
+        {
+            AdminView adminView = new AdminView();
+            adminView.user = u;
+            adminView.AllUsers = db.users.Where(x => x.userTypeId != 1).ToList();
+            adminView.AllProjects = db.project.Where(x => x.Id > 0).ToList();
+            return adminView;
         }
     }
 }
