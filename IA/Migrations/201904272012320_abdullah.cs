@@ -3,7 +3,7 @@ namespace IA.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class omar : DbMigration
+    public partial class abdullah : DbMigration
     {
         public override void Up()
         {
