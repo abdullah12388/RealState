@@ -40,8 +40,7 @@ namespace IA.Models
         [Required(ErrorMessage = "Required")]
         public string phone { get; set; }
         public string jobDescription { get; set; }
-        public string qualification { get; set; }
-        public string experience { get; set; }
+
 
 
         public string photo { get; set; }
