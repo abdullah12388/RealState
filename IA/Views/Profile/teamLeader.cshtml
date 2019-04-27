@@ -95,7 +95,7 @@
                 </select>
                 <select class="form-control" name="jeId" required>
                     <option value="" selected disabled>choose JE</option>
-                    @foreach (var item in Model.je)
+                    @foreach (var item in Model.jepro)
                     {
                         <option value="@item.Id">@item.firstName</option>
                     }

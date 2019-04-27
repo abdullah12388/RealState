@@ -71,7 +71,16 @@ namespace IA.Controllers
                 var pro = db.project.Where(x => x.Id.Equals((int)item.proId)).FirstOrDefault();
                 urtl.hisPro.Add(pro.pName);
             }
+            int pmc = (int)Session["ID"];
             urtl.je = db.users.Where(x => x.userTypeId == 5).ToList();
+            foreach (var item in urtl.je )
+            {
+                var j = db.Req_Team.Where(x => x.rPM == pmc && x.rTL == item.Id && x.rStatue == 1).FirstOrDefault();
+                if(j != null)
+                {
+                    urtl.jepro.Add(item);
+                }
+            }
             return urtl;
         }
         public ActionResult ReqJE(string proId , string jeId)
