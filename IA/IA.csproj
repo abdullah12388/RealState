@@ -169,7 +169,9 @@
       <DependentUpon>201904261733456_abdullah2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Experience.cs" />
     <Compile Include="Models\projects.cs" />
+    <Compile Include="Models\Qualifications.cs" />
     <Compile Include="Models\RealEstateContext.cs" />
     <Compile Include="Models\report.cs" />
     <Compile Include="Models\Req_proj.cs" />
