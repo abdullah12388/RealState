@@ -1,0 +1,50 @@
+﻿@model IA.Models.users
+@{
+    ViewBag.Title = "Profile";
+    ViewBag.user = Model;
+    Layout = "~/Views/Shared/_AdminProfile.cshtml";
+
+}
+<p>
+    <input type="button" class="btn btn-primary btn-sm" id="e_b" value="experience" />
+    <input type="button" class="btn btn-primary btn-sm" id="c_b" value="Current Projects" />
+    <input type="button" class="btn btn-primary btn-sm" id="p_b" value="Pervious projects" />
+    <input type="button" class="btn btn-primary btn-sm" id="btnAdd" onclick="" value="project's team" />
+    <input type="button" class="btn btn-primary btn-sm" id="btnAdd" onclick="" value="Control Project" />
+    <input type="button" class="btn btn-primary btn-sm" id="click" onclick="click" value="Others" />
+</p>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<div id="state"></div>
+
+<script type="text/javascript">
+    $("#e_b").click(function () {
+        $('#state').empty();
+        $.get('@Url.Action("Exp_chart", "ProjectManager")', {}, function (response) {
+        $("#state").html(response);
+         });
+    });
+</script>
+
+<script type="text/javascript">
+    $("#c_b").click(function () {
+        $('#state').empty();
+      $.get('@Url.Action("PM_exp", "ProjectManager")', {}, function (response) {
+        $("#state").html(response);
+         });
+    });
+</script>
+
+<script type="text/javascript">
+    $("#p_b").click(function () {
+        $('#state').empty();
+      $.get('@Url.Action("pre_project", "ProjectManager")', {}, function (response) {
+        $("#state").html(response);
+         });
+    });
+</script>

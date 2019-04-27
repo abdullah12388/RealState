@@ -15,6 +15,7 @@ namespace IA.Models
         public decimal pSalary { get; set; }
         public string pDescription { get; set; }
         public string pArea { get; set; }
+        public int progress { get; set; }
         public int pStatus { get; set; }
         [ForeignKey("Pm")]
         public int? pmId { get; set; }

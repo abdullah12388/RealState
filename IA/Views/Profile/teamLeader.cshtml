@@ -24,10 +24,10 @@
                     </label>
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-success">@Html.ActionLink("Accept", "Accept", "Profile", new { id = Model.rtl[i].Id }, null)</button>
+                    <button class="btn btn-success">@Html.ActionLink("Accept", "Accept", "TeamLeader", new { id = Model.rtl[i].Id }, null)</button>
                 </div>
                 <div class="col-sm-2">
-                    <button class="btn btn-danger">@Html.ActionLink("Reject", "Reject", "Profile", new { id = Model.rtl[i].Id }, null)</button>
+                    <button class="btn btn-danger">@Html.ActionLink("Reject", "Reject", "TeamLeader", new { id = Model.rtl[i].Id }, null)</button>
                 </div>
             </div>
         }
@@ -40,7 +40,7 @@
                 @foreach (var item in Model.curPro)
                 {
                     <label>@item.pName</label>
-                    <button class="btn btn-danger">@Html.ActionLink("X", "Reject", "Profile", new { id = item.Id }, null)</button>
+                    <button class="btn btn-danger">@Html.ActionLink("X", "Reject", "TeamLeader", new { id = item.Id }, null)</button>
                 }
             </div>
             <div class="col">
@@ -56,7 +56,7 @@
 <div class="row">
     <div class="col-sm-8">
         
-            @using (Html.BeginForm("ReqJE", "Profile", FormMethod.Post, new { role = "form" }))
+            @using (Html.BeginForm("ReqJE", "TeamLeader", FormMethod.Post, new { role = "form" }))
             {
                 <div class="row">
                     <div class="col-sm-4">
@@ -84,7 +84,7 @@
             }
     </div>
     <div class="col-sm-4">
-        @using (Html.BeginForm("DelJE", "Profile", FormMethod.Post, new { role = "form" }))
+        @using (Html.BeginForm("DelJE", "TeamLeader", FormMethod.Post, new { role = "form" }))
             {
                 <select class="form-control" name="proId" required style="margin-bottom:10px">
                     <option value="" selected disabled>choose project</option>

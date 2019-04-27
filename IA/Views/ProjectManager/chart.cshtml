@@ -1,0 +1,28 @@
+﻿
+<div id="piechart" style="width: 900px; height: 500px;" class="property horizontal d-flex"></div>
+<script>
+google.charts.load('current', { 'packages': ['corechart'] });
+google.charts.setOnLoadCallback(drawChart);
+function drawChart()
+{
+    var Namearray = [];
+    var years = [];
+        @foreach (var item in ViewBag.Exp)
+        {
+            @:Namearray.push("@item.E_Name");
+            @:years.push("@item.year");
+        }
+    var data = new google.visualization.DataTable();
+    var options = {is3D: true,};
+    data.addColumn('string', 'Experience');
+    data.addColumn('number', 'number of years');
+    var year;
+    for (i = 0; i < Namearray.length; i++) {
+        year = parseInt(years[i], 10)
+        data.addRow([Namearray[i].toString(), year]);
+    }
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

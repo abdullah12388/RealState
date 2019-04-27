@@ -152,13 +152,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\ProjectManagerController.cs" />
+    <Compile Include="Controllers\TeamLeaderController.cs" />
     <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904271810587_abdullah.cs" />
-    <Compile Include="Migrations\201904271810587_abdullah.Designer.cs">
-      <DependentUpon>201904271810587_abdullah.cs</DependentUpon>
+    <Compile Include="Migrations\201904272002326_abdullah.cs" />
+    <Compile Include="Migrations\201904272002326_abdullah.Designer.cs">
+      <DependentUpon>201904272002326_abdullah.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminView.cs" />
@@ -197,6 +199,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Profile\admin.cshtml" />
     <Content Include="Views\Profile\teamLeader.cshtml" />
+    <Content Include="Views\Profile\projectManager.cshtml" />
+    <Content Include="Views\ProjectManager\chart.cshtml" />
+    <Content Include="Views\ProjectManager\PM_Exp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,8 +213,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904271810587_abdullah.resx">
-      <DependentUpon>201904271810587_abdullah.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904272002326_abdullah.resx">
+      <DependentUpon>201904272002326_abdullah.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
