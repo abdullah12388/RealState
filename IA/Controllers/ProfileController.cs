@@ -71,7 +71,49 @@ namespace IA.Controllers
                 var pro = db.project.Where(x => x.Id.Equals((int)item.proId)).FirstOrDefault();
                 urtl.hisPro.Add(pro.pName);
             }
+            urtl.je = db.users.Where(x => x.userTypeId == 5).ToList();
             return urtl;
+        }
+        public ActionResult ReqJE(string proId , string jeId)
+        {
+            int pid = int.Parse(proId);
+            int jid = int.Parse(jeId);
+            int pm = (int)Session["ID"];
+            var req = db.Req_Team.Where(x => x.rPM == pm && x.proId == pid && x.rTL == jid).FirstOrDefault();
+            //Console.Write(req.Id);
+            if (req != null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                int i = int.Parse(proId);
+                var p = db.project.Where(x=> x.Id == i).FirstOrDefault();
+                Req_Team rt = new Req_Team();
+                rt.rPM = (int)Session["ID"];
+                rt.rTL = int.Parse(jeId);
+                rt.tId = p.pTeam;
+                rt.proId = p.Id;
+                rt.rStatue = 0;
+                db.Req_Team.Add(rt);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        public ActionResult DelJE(string proId, string jeId)
+        {
+            int pid = int.Parse(proId);
+            int jid = int.Parse(jeId);
+            int pm = (int)Session["ID"];
+            var req = db.Req_Team.Where(x => x.rPM == pm && x.proId == pid && x.rTL == jid && x.rStatue == 1).FirstOrDefault();
+            //Console.Write(req.Id);
+            if (req != null)
+            {
+                db.Req_Team.Remove(req);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -8,6 +8,7 @@ namespace IA.Models
     public class user_req_team
     {
         public users tl = new users();
+        public List<users> je = new List<users>();
         public List<Req_Team> rtl = new List<Req_Team>();
         public List<string> pmName = new List<string>();
         public List<string> proName = new List<string>();
