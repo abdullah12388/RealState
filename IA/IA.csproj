@@ -206,6 +206,7 @@
     <Content Include="Views\Profile\projectManager.cshtml" />
     <Content Include="Views\ProjectManager\chart.cshtml" />
     <Content Include="Views\ProjectManager\PM_Exp.cshtml" />
+    <Content Include="Views\Profile\JouniorEngineer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
