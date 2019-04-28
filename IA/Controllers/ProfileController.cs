@@ -24,6 +24,8 @@ namespace IA.Controllers
                 }
                 else if (users.userTypeId.Equals(4))
                 {
+                    int ID = Convert.ToInt32(Session["ID"]);
+                    ViewBag.Exp = db.Experience.Where(x => x.userId == ID).ToList();
                     user_req_team urtobject = TL(users);
                     return View("teamLeader", urtobject);
                 }
@@ -34,6 +36,8 @@ namespace IA.Controllers
 
                 else if (users.userTypeId.Equals(5))
                 {
+                    int ID = Convert.ToInt32(Session["ID"]);
+                    ViewBag.Exp = db.Experience.Where(x => x.userId == ID).ToList();
                     user_req_team urtobject = TL(users);
                     return View("JouniorEngineer", urtobject);
                 }

@@ -25,6 +25,14 @@ namespace IA.Controllers
             db.SaveChanges();
             return RedirectToAction("Index", "Profile");
         }
+        public ActionResult Delete(int id)
+        {
+            int jeid = (int)Session["ID"];
+            var reqTeam = db.Req_Team.Single(x => x.proId == id && x.rTL == jeid);
+            reqTeam.rStatue = 2;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Profile");
+        }
         public ActionResult ReqJE(string proId, string jeId)
         {
             int pid = int.Parse(proId);
@@ -64,6 +72,24 @@ namespace IA.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Profile");
             }
+            return RedirectToAction("Index", "Profile");
+        }
+        public ActionResult feedback(string proId, string jeId,string rate,string feedback)
+        {
+            int pid = int.Parse(proId);
+            int jid = int.Parse(jeId);
+            int pm = (int)Session["ID"];
+            int i = int.Parse(proId);
+            int r = int.Parse(rate);
+            var p = db.project.Where(x => x.Id == i).FirstOrDefault();
+            Feedback fb = new Feedback();
+            fb.tl = (int)Session["ID"];
+            fb.je = int.Parse(jeId);
+            fb.pro = p.Id;
+            fb.rate = r;
+            fb.feedback = feedback;
+            db.Feedback.Add(fb);
+            db.SaveChanges();
             return RedirectToAction("Index", "Profile");
         }
     }

@@ -42,7 +42,40 @@
     color: #c59b08;
 }
 </style>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<div class="row">
+    <div id="piechart" style="width: 900px; height: 500px;margin:auto;" class="property horizontal d-flex"></div>
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart()
+        {
+            var Namearray = [];
+            var years = [];
+                @foreach (var item in ViewBag.Exp)
+                {
+                    @:Namearray.push("@item.E_Name");
+                    @:years.push("@item.year");
+                }
+            var data = new google.visualization.DataTable();
+            var options = {is3D: true,};
+            data.addColumn('string', 'Experience');
+            data.addColumn('number', 'number of years');
+            var year;
+            for (i = 0; i < Namearray.length; i++) {
+                year = parseInt(years[i], 10)
+                data.addRow([Namearray[i].toString(), year]);
+            }
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</div>
 <div class="row">@*current and history columns*@
     <div class="col-sm-8" style="height:300px;overflow:auto">
         <h4 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Current Requests</h4>
@@ -78,7 +111,7 @@
                 @foreach (var item in Model.curPro)
                 {
                     <label>@item.pName</label>
-                    <button class="btn btn-danger">@Html.ActionLink("X", "Reject", "TeamLeader", new { id = item.Id }, null)</button>
+                    <button class="btn btn-danger">@Html.ActionLink("X", "Delete", "TeamLeader", new { id = item.Id }, null)</button>
                 }
             </div>
             <div class="col">
@@ -93,7 +126,7 @@
 </div>
 <div class="row">
     <div class="col-sm-8">
-        
+            <h4 style="text-align:center;margin-bottom:30px">Send Jounior Engineer Request</h4>
             @using (Html.BeginForm("ReqJE", "TeamLeader", FormMethod.Post, new { role = "form" }))
             {
                 <div class="row">
@@ -122,6 +155,7 @@
             }
     </div>
     <div class="col-sm-4">
+        <h4 style="text-align:center;margin-bottom:30px">Delete Jounior Engineer</h4>
         @using (Html.BeginForm("DelJE", "TeamLeader", FormMethod.Post, new { role = "form" }))
             {
                 <select class="form-control" name="proId" required style="margin-bottom:10px">
@@ -144,7 +178,8 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
-        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "form-group", role = "form" }))
+        <h4 style="margin-bottom:30px">Evaluate and Feedback Jounior Engineer</h4>
+        @using (Html.BeginForm("feedback", "teamLeader", FormMethod.Post, new { @class = "form-group", role = "form" }))
         {
                 <div class="row">
                     <div class="col-sm-7 form-group">
@@ -153,6 +188,17 @@
                             @foreach (var item in Model.je)
                             {
                                 <option value="@item.Id">@item.firstName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-7 form-group">
+                        <select class="form-control" name="proId" required style="margin-bottom:10px">
+                            <option value="" selected disabled>choose project</option>
+                            @foreach (var item in Model.curPro)
+                            {
+                                <option value="@item.Id">@item.pName</option>
                             }
                         </select>
                     </div>
@@ -176,7 +222,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-7 form-group">
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Feedback">
+                        <input type="text" class="form-control" name="feedback" id="formGroupExampleInput" placeholder="Feedback">
                     </div>
                 </div>
                 <div class="row">

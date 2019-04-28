@@ -159,11 +159,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904272143022_abdullah.cs" />
-    <Compile Include="Migrations\201904272143022_abdullah.Designer.cs">
-      <DependentUpon>201904272143022_abdullah.cs</DependentUpon>
+    <Compile Include="Migrations\201904281329475_abdullah.cs" />
+    <Compile Include="Migrations\201904281329475_abdullah.Designer.cs">
+      <DependentUpon>201904281329475_abdullah.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="ViewModel\AdminView.cs" />
     <Compile Include="Models\Experience.cs" />
     <Compile Include="Models\projects.cs" />
@@ -222,8 +223,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904272143022_abdullah.resx">
-      <DependentUpon>201904272143022_abdullah.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904281329475_abdullah.resx">
+      <DependentUpon>201904281329475_abdullah.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
