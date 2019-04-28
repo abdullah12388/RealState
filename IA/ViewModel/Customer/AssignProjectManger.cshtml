@@ -1,0 +1,45 @@
+﻿@model IA.Models.ProjectMangerAssign
+
+@{
+    Layout = null;
+}
+
+@{Html.RenderPartial("Head");}
+
+
+<body>
+    <section class="site-section bg-light bg-image" id="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-5">
+                    @using (Html.BeginForm("SaveAssignProjectManger", "Customer"))
+                    {
+                        <h2 class="h4 text-black mb-5">Update Project</h2>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label>Project List</label>
+                                @Html.DropDownListFor(p => p.Reqpro.rProject,new SelectList(Model.ProjectList,"Id" , "pName"),"Selected Project List", new { @class = "form-control", @required = "required" })
+                                @Html.ValidationMessageFor(p => p.Reqpro.rProject)
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label>Project Manger List</label>
+                                @Html.DropDownListFor(p => p.Reqpro.rPM, new SelectList(Model.ProjectManagersList, "Id", "firstName"), "Selected Project List", new { @class = "form-control", @required = "required" })
+                                @Html.ValidationMessageFor(p => p.Reqpro.rPM)
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <button type ="submit"class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+@{Html.RenderPartial("Footer");}

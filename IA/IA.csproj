@@ -164,7 +164,7 @@
       <DependentUpon>201904272143022_abdullah.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AdminView.cs" />
+    <Compile Include="ViewModel\AdminView.cs" />
     <Compile Include="Models\Experience.cs" />
     <Compile Include="Models\projects.cs" />
     <Compile Include="Models\Qualifications.cs" />
@@ -177,7 +177,7 @@
     <Compile Include="Models\teamMember.cs" />
     <Compile Include="Models\users.cs" />
     <Compile Include="Models\userType.cs" />
-    <Compile Include="Models\user_req_team.cs" />
+    <Compile Include="ViewModel\user_req_team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\Customer_Assingnd_NotAssigned_Projects.cs" />
     <Compile Include="ViewModel\ListPro.cs" />
@@ -207,6 +207,10 @@
     <Content Include="Views\ProjectManager\chart.cshtml" />
     <Content Include="Views\ProjectManager\PM_Exp.cshtml" />
     <Content Include="Views\Profile\JouniorEngineer.cshtml" />
+    <Content Include="Views\ProjectManager\prevProj.cshtml" />
+    <Content Include="Views\Profile\Customer.cshtml" />
+    <Content Include="Views\Customer\AssignProjectManger.cshtml" />
+    <Content Include="Views\Customer\CustomerForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

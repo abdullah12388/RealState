@@ -1,14 +1,14 @@
 ﻿<div id="proj">
-    <div class="property horizontal d-flex">
-        <div class="prop-details p-3">
-            <div class="mb-2 d-flex justify-content-between">
+    <div>
+        <div class="row">
+            <div class="col-sm-12">
                 @foreach (var item in ViewBag.proj)
                 {
-                    <strong class="price"><font size="+3">Project @item.pName </font> </strong>
+                    <strong class="price"> @item.pName  </strong>
                     <ul class="w border-r">
-                        <li><font size="+3">Project Salary : @item.pSalary</font> </li>
-                        <li><font size="+3">Project Description : @item.pDescription</font> </li>
-                        <li><font size="+3">Project Area : @item.pArea</font> </li>
+                        <li> Salary : @item.pSalary </li>
+                        <li> Description : @item.pDescription </li>
+                        <li> Area : @item.pArea </li>
                     </ul>
                 }
             </div>

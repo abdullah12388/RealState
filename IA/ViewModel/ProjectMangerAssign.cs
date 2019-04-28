@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using IA.Models;
-namespace IA.ViewModel
+namespace IA.Models
 {
     public class ProjectMangerAssign
     {
