@@ -17,9 +17,9 @@ namespace IA.Controllers
         public ActionResult pre_project()
         {
             int ID = Convert.ToInt32(Session["ID"]);
-            ViewBag.proj = db.project.Where(x => x.pmId == ID && x.progress == 2).ToList();
+            //ViewBag.proj = db.project.Where(x => x.pmId == ID && x.progress == 2).ToList();
             ViewBag.c_proj = db.project.Where(x => x.pmId == ID && x.progress == 1).ToList();
-            return PartialView("_pre_project");
+            return PartialView("prevProj");
         }
 
         public ActionResult Search_team()

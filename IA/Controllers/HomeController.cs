@@ -8,7 +8,7 @@ using System.Data.Entity;
 using IA.Models;
 using System.Net;
 using System.IO;
-using IA.ViewModel;
+
 namespace IA.Controllers
 {
     public class HomeController : Controller
