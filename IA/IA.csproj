@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -159,11 +160,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904281329475_abdullah.cs" />
-    <Compile Include="Migrations\201904281329475_abdullah.Designer.cs">
-      <DependentUpon>201904281329475_abdullah.cs</DependentUpon>
+    <Compile Include="Migrations\201904291500494_abdullah.cs" />
+    <Compile Include="Migrations\201904291500494_abdullah.Designer.cs">
+      <DependentUpon>201904291500494_abdullah.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="ViewModel\AdminView.cs" />
     <Compile Include="Models\Experience.cs" />
@@ -206,12 +208,21 @@
     <Content Include="Views\Profile\teamLeader.cshtml" />
     <Content Include="Views\Profile\projectManager.cshtml" />
     <Content Include="Views\ProjectManager\chart.cshtml" />
-    <Content Include="Views\ProjectManager\PM_Exp.cshtml" />
+    <Content Include="Views\ProjectManager\curProj.cshtml" />
     <Content Include="Views\Profile\JouniorEngineer.cshtml" />
     <Content Include="Views\ProjectManager\prevProj.cshtml" />
     <Content Include="Views\Profile\Customer.cshtml" />
     <Content Include="Views\Customer\AssignProjectManger.cshtml" />
     <Content Include="Views\Customer\CustomerForm.cshtml" />
+    <Content Include="Views\Admin\DeleteUser.cshtml" />
+    <Content Include="Views\Admin\AddUser.cshtml" />
+    <Content Include="Views\Admin\DeleteProject.cshtml" />
+    <Content Include="Views\Admin\AddProject.cshtml" />
+    <Content Include="Views\Admin\UpdateProject.cshtml" />
+    <Content Include="Views\ProjectManager\_EditProj.cshtml" />
+    <Content Include="Views\ProjectManager\_Control_project.cshtml" />
+    <Content Include="Views\ProjectManager\editProject.cshtml" />
+    <Content Include="Views\Admin\_comment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -223,8 +234,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904281329475_abdullah.resx">
-      <DependentUpon>201904281329475_abdullah.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904291500494_abdullah.resx">
+      <DependentUpon>201904291500494_abdullah.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

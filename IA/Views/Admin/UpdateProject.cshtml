@@ -1,0 +1,65 @@
+﻿@model IA.Models.projects
+
+@{
+    Layout = null;
+}
+
+@{Html.RenderPartial("Head");}
+
+
+<body>
+    <section class="site-section bg-light bg-image" id="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-5">
+                    @using (Html.BeginForm("UpdateProject", "Admin"))
+                    {
+                        <h2 class="h4 text-black mb-5">Update Project</h2>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="text-black" for="fname">Project Name</label>
+                                @Html.TextBoxFor(p => p.pName, new { @class = "form-control", @placeholder = "Enter Project Name", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(p => p.pName)
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="text-black" for="subject">Description</label>
+                                @Html.TextAreaFor(p => p.pDescription, new { @class = "form-control", @placeholder = "Enter Project Description", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(p => p.pDescription)
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="text-black" for="message">Area</label>
+                                @Html.TextBoxFor(p => p.pArea, new { @class = "form-control", @placeholder = "Enter Project Area", @required = "required", @type = "text" })
+                                @Html.ValidationMessageFor(p => p.pArea)
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="text-black" for="message">Salary</label>
+                                @Html.TextBoxFor(p => p.pSalary, new { @class = "form-control", @placeholder = "Enter Project Area", @required = "required", @type = "number" })
+                                @Html.ValidationMessageFor(p => p.pSalary)
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                @Html.HiddenFor(p => p.Id)
+                                <button type="submit" class="btn btn-primary btn-md text-white"> Save </button>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+@{Html.RenderPartial("Footer");}
+
+
+
+
