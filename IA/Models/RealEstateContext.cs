@@ -33,5 +33,6 @@ namespace IA.Models
         public System.Data.Entity.DbSet<IA.Models.Experience> Experience { get; set; }
         public System.Data.Entity.DbSet<IA.Models.Qualifications> Qualifications { get; set; }
         public System.Data.Entity.DbSet<IA.Models.Feedback> Feedback { get; set; }
+        public System.Data.Entity.DbSet<IA.Models.Comments> Comments { get; set; }
     }
 }

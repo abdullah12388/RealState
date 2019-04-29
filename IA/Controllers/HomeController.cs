@@ -77,7 +77,7 @@ namespace IA.Controllers
                 ViewBag.User_Types = db.userType.Where(x => x.userTypeId > 1).ToList();
                 return View("Index", usr);
             }
-}
+        }
 
         [HttpPost]
         public ActionResult Login(users usr)

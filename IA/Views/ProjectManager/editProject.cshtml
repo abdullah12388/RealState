@@ -1,0 +1,34 @@
+﻿@model IA.Models.projects
+<div class="row">
+    <div class="col-md-12 mb-5">
+        @using (Html.BeginForm("update", "ProjectManager"))
+        {
+            <h2 class="h4 text-black mb-5">@Html.DisplayFor(model=>model.pName)</h2>
+                
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <label class="text-black" for="message">Salary</label>
+                        @Html.TextBoxFor(p => p.pSalary, new { @class = "form-control", @placeholder = "Enter Project Area", @required = "required", @type = "number" })
+                        @Html.ValidationMessageFor(p => p.pSalary)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h4> Progress </h4>
+                    <div class="col-md-10">
+                        <select name="statue" id="q_rate" class="form-control">
+                            <option value="2">In-Progress</option>
+                            <option value="3">Deliveried</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        @Html.HiddenFor(p => p.Id)
+                        <button type="submit" class="btn btn-primary btn-md text-white"> Save </button>
+                    </div>
+                </div>
+
+        }
+    </div>
+</div>
+

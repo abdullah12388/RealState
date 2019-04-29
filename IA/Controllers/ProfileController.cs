@@ -91,42 +91,7 @@ namespace IA.Controllers
             }
             return urtl;
         }
-        //private user_req_team JE(users users)
-        //{
-        //    user_req_team urtl = new user_req_team();
-        //    urtl.tl = users;
-        //    urtl.rtl = db.Req_Team.Where(x => x.rTL.Equals(users.Id) && x.rStatue == 0).ToList();
-        //    foreach (var item in urtl.rtl)
-        //    {
-        //        var pro = db.project.Where(x => x.Id.Equals((int)item.proId)).FirstOrDefault();
-        //        urtl.proName.Add(pro.pName);
-        //        var pm = db.users.Where(x => x.Id.Equals((int)item.rPM)).FirstOrDefault();
-        //        urtl.pmName.Add(pm.firstName);
-        //    }
-        //    var currentProject = db.Req_Team.Where(x => x.rTL.Equals(users.Id) && x.rStatue == 1).ToList();
-        //    foreach (var item in currentProject)
-        //    {
-        //        var pro = db.project.Where(x => x.Id.Equals((int)item.proId)).FirstOrDefault();
-        //        urtl.curPro.Add(pro);
-        //    }
-        //    var HistoryProject = db.Req_Team.Where(x => x.rTL.Equals(users.Id) && x.rStatue == 3).ToList();
-        //    foreach (var item in HistoryProject)
-        //    {
-        //        var pro = db.project.Where(x => x.Id.Equals((int)item.proId)).FirstOrDefault();
-        //        urtl.hisPro.Add(pro.pName);
-        //    }
-        //    int pmc = (int)Session["ID"];
-        //    urtl.je = db.users.Where(x => x.userTypeId == 5).ToList();
-        //    foreach (var item in urtl.je)
-        //    {
-        //        var j = db.Req_Team.Where(x => x.rPM == pmc && x.rTL == item.Id && x.rStatue == 1).FirstOrDefault();
-        //        if (j != null)
-        //        {
-        //            urtl.jepro.Add(item);
-        //        }
-        //    }
-        //    return urtl;
-        //}
+        
         // Admin Function
         private AdminView AV(users u)
         {

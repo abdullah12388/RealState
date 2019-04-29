@@ -1,0 +1,33 @@
+﻿@model List<IA.Models.users>
+
+<div>
+    <h3 style="text-align: center;">users</h3>
+    <hr />
+    
+        <div class="row"style="width:100%;font-size:20px;">
+            <div class="col-lg-2">@Html.DisplayNameFor(model => model[0].type.type)</div>
+            <div class="col-lg-1">@Html.DisplayNameFor(model => model[0].firstName)</div>
+            <div class="col-lg-1">@Html.DisplayNameFor(model => model[0].lastName)</div>
+            <div class="col-lg-2">@Html.DisplayNameFor(model => model[0].email)</div>
+            <div class="col-lg-2">@Html.DisplayNameFor(model => model[0].address)</div>
+            <div class="col-lg-1">@Html.DisplayNameFor(model => model[0].phone)</div>
+            <div class="col-lg-2">@Html.DisplayNameFor(model => model[0].jobDescription)</div>
+            <div class="col-lg-1"></div>
+        </div>
+        <hr/>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <div class="row" style="width:100%">
+                <div class="col-lg-2">@Html.DisplayFor(model => model[i].type.type)</div>
+                <div class="col-lg-1">@Html.DisplayFor(model => model[i].firstName)</div>
+                <div class="col-lg-1">@Html.DisplayFor(model => model[i].lastName)</div>
+                <div class="col-lg-2">@Html.DisplayFor(model => model[i].email)</div>
+                <div class="col-lg-2">@Html.DisplayFor(model => model[i].address)</div>
+                <div class="col-lg-1">@Html.DisplayFor(model => model[i].phone)</div>
+                <div class="col-lg-2">@Html.DisplayFor(model => model[i].jobDescription)</div>
+                <div class="col-lg-1">@Html.ActionLink("Delete", "Delete", "Admin",new { id = Model[i].Id},null)</div>
+            </div>
+            <hr />
+        }
+    
+</div>

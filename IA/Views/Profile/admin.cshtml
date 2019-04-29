@@ -4,6 +4,52 @@
     ViewBag.user = Model.user;
     Layout = "~/Views/Shared/_AdminProfile.cshtml";
 }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <h1>Admin</h1>
 <h1>@Html.DisplayFor(model=>model.AllUsers[0].email)</h1>
 <h1>@Html.DisplayFor(model => model.AllProjects[0].pName)</h1>
+
+<p>
+    <input type="button" class="btn btn-primary btn-sm" id="delete" value="Delete User" />
+    <input type="button" class="btn btn-primary btn-sm" id="add" value="Add User" />
+    <input type="button" class="btn btn-primary btn-sm" id="deleteProject" value="Delete Projects" />
+    <input type="button" class="btn btn-primary btn-sm" id="addProject" value="Add Projects" />
+</p>
+
+<div id="state"></div>
+
+<script type="text/javascript">
+    $("#delete").click(function () {
+        $('#state').empty();
+        $.get('@Url.Action("DeleteView", "Admin")', {}, function (response) {
+        $("#state").html(response);
+         });
+    });
+</script>
+
+<script type="text/javascript">
+    $("#add").click(function () {
+        $('#state').empty();
+        $.get('@Url.Action("AddView", "Admin")', {}, function (response) {
+        $("#state").html(response);
+         });
+    });
+</script>
+
+<script type="text/javascript">
+    $("#deleteProject").click(function () {
+        $('#state').empty();
+        $.get('@Url.Action("ProjectView", "Admin")', {}, function (response) {
+        $("#state").html(response);
+         });
+    });
+</script>
+
+<script type="text/javascript">
+    $("#addProject").click(function () {
+        $('#state').empty();
+        $.get('@Url.Action("AddProjectView", "Admin")', {}, function (response) {
+        $("#state").html(response);
+         });
+    });
+</script>

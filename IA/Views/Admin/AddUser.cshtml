@@ -1,0 +1,89 @@
+﻿@model IA.Models.users
+
+@using (Html.BeginForm("Add", "Admin", FormMethod.Post, new { @class = "form-group", role = "form", enctype = "multipart/form-data" }))
+{
+    <div class="row form-group">
+        <div class="col-md-12">
+            @Html.Label("first_name", "First Name:")
+            @Html.TextBoxFor(x => x.firstName, new { @class = "form-control", required = "required", @maxlength = "50" })
+            @Html.ValidationMessageFor(x => x.firstName)
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            @Html.Label("last_name", "Last Name:")
+            @Html.TextBoxFor(x => x.lastName, new { @class = "form-control", required = "required", maxlength = "50" })
+            @Html.ValidationMessageFor(x => x.lastName)
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            @if (TempData["email"] != null)
+            {
+            <span style="color:red;padding-left:20px;display:block">@TempData["email"].ToString()</span>
+            }
+            @Html.Label("email-register", "Email:")
+            @Html.TextBoxFor(x => x.email, new { @class = "form-control", required = "required", @type = "email" })
+            @Html.ValidationMessageFor(x => x.email)
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            @Html.Label("password-register", "Password:")
+            @Html.TextBoxFor(x => x.password, new { @class = "form-control", required = "required", @type = "password" })
+            @Html.ValidationMessageFor(x => x.password)
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            @Html.Label("password-confirmation", "Confirm Password:")
+            @Html.TextBoxFor(x => x.ConfirmPassowrd, new { @class = "form-control", required = "required", @type = "password" })
+            @Html.ValidationMessageFor(x => x.ConfirmPassowrd)
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            @Html.Label("t", "Role:")
+            <select name="type" class="form-control">
+                <!--<option disabled selected>Select Your Role</option>-->
+                @foreach (var item in ViewBag.User_Types)
+                {
+                    <option value="@item.userTypeId">@item.type</option>}
+            </select>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            @Html.Label("address", "Address:")
+            @Html.TextBoxFor(x => x.address, new { @class = "form-control", maxlength = "50" })
+            @Html.ValidationMessageFor(x => x.address)
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            @Html.Label("phone-number", "Phone Number:")
+            @Html.TextBoxFor(x => x.phone, new { @class = "form-control", maxlength = "50", @type = "tel" })
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            @Html.Label("jop-description", "Jop Description:")
+            @Html.TextBoxFor(x => x.jobDescription, new { @class = "form-control", maxlength = "50" })
+        </div>
+    </div>
+
+    @*@Html.Label("qualification", "Qualification:")
+        @Html.TextBoxFor(x => x.qualification , new { maxlength = "50" })
+
+
+        @Html.Label("exprience", "Exprience:")
+        @Html.TextBoxFor(x => x.experience , new {  maxlength = "50" })*@
+    <div class="row form-group">
+        <div class="col-md-12">
+            @Html.Label("photoFile", "Photo:")
+            <input  type="file" name="photoFile" required />
+        </div>
+    </div>
+    <input type="submit" id="submit" value="Create Account">
+}
+

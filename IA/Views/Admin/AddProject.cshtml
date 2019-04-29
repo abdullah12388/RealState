@@ -1,0 +1,52 @@
+﻿@model IA.Models.projects
+
+
+@using (Html.BeginForm("AddProject", "Admin"))
+{
+    <h2 class="h4 text-black mb-5">Create Project</h2>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <label class="text-black" for="fname">Project Name</label>
+            @Html.TextBoxFor(p => p.pName, new { @class = "form-control", @placeholder = "Enter Project Name", @required = "required", @type = "text" })
+            @Html.ValidationMessageFor(p => p.pName)
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <label class="text-black" for="subject">Description</label>
+            @Html.TextAreaFor(p => p.pDescription, new { @class = "form-control", @placeholder = "Enter Project Description", @required = "required", @type = "text" })
+            @Html.ValidationMessageFor(p => p.pDescription)
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <label class="text-black" for="message">Area</label>
+            @Html.TextBoxFor(p => p.pArea, new { @class = "form-control", @placeholder = "Enter Project Area", @required = "required", @type = "text" })
+            @Html.ValidationMessageFor(p => p.pArea)
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-md-12">
+            <label class="text-black" for="message">Salary</label>
+            @Html.TextBoxFor(p => p.pSalary, new { @class = "form-control", @placeholder = "Enter Project Area", @required = "required", @type = "number" })
+            @Html.ValidationMessageFor(p => p.pSalary)
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="text-black" for="message">Customer</label>
+        <select name="id" class="form-control">
+            <!--<option disabled selected>Select Your Role</option>-->
+            @foreach (var item in ViewBag.cust)
+            {
+                <option value="@item.Id">@item.firstName</option>
+            }
+        </select>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary btn-md text-white"> Save </button>
+        </div>
+    </div>
+    
+}

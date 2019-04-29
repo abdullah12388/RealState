@@ -125,27 +125,12 @@ namespace IA.Controllers
                     request.Reqpro.rStatue = 0;
                     _context.Req_proj.Add(request.Reqpro);
                     _context.SaveChanges();
-
                     return RedirectToAction("Index", "Profile");
-
                 }
-                else
-                {
-                    return HttpNotFound("You Dont Have Acess To this Page");
-                }
+                else{return HttpNotFound("You Dont Have Acess To this Page");}
             }
-            else
-            {
-                return HttpNotFound("Not Registerd");
-            }
-
+            else{return HttpNotFound("Not Registerd");}
         }
-
-
-
-
-
-
         public ActionResult AssignProjectManger()
         {
             if (Session["ID"] != null)

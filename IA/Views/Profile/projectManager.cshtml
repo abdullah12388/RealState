@@ -9,11 +9,9 @@
     <input type="button" class="btn btn-primary btn-sm" id="e_b" value="experience" />
     <input type="button" class="btn btn-primary btn-sm" id="c_b" value="Current Projects" />
     <input type="button" class="btn btn-primary btn-sm" id="p_b" value="Pervious projects" />
-    <!--
-    <input type="button" class="btn btn-primary btn-sm" id="btnAdd" onclick="" value="project's team" />
-    <input type="button" class="btn btn-primary btn-sm" id="btnAdd" onclick="" value="Control Project" />
-    <input type="button" class="btn btn-primary btn-sm" id="click" onclick="click" value="Others" />
-        -->
+    <input type="button" class="btn btn-primary btn-sm" id="control" onclick="" value="Control Project" />
+    <input type="button" class="btn btn-primary btn-sm" id="com" onclick="comment()" value="Write Comments" />
+    
 </p>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -36,7 +34,7 @@
 <script type="text/javascript">
     $("#c_b").click(function () {
         $('#state').empty();
-      $.get('@Url.Action("PM_exp", "ProjectManager")', {}, function (response) {
+      $.get('@Url.Action("cur_projects", "ProjectManager")', {}, function (response) {
         $("#state").html(response);
          });
     });
@@ -49,4 +47,28 @@
         $("#state").html(response);
          });
     });
+</script>
+
+<script type="text/javascript">
+    $("#control").click(function () {
+        $('#state').empty();
+      $.get('@Url.Action("cur_projects_list", "ProjectManager")', {}, function (response) {
+        $("#state").html(response);
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    function comment() {
+        $('#state').empty();
+        var url = '@Url.Action("comment")';
+        $.ajax({
+            url: url,
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                $('#state').html(result);
+            }
+        });
+    }
 </script>
