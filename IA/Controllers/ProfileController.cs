@@ -62,8 +62,8 @@ namespace IA.Controllers
             urtl.rtl = db.Req_Team.Where(x => x.rTL.Equals(users.Id) && x.rStatue == 0).ToList();
             foreach (var item in urtl.rtl)
             {
-                var pro = db.project.Where(x => x.Id.Equals((int)item.proId)).FirstOrDefault();
-                urtl.proName.Add(pro.pName);
+                //var pro = db.project.Where(x => x.Id.Equals((int)item.proId)).FirstOrDefault();
+                //urtl.proName.Add(pro.pName);
                 var pm = db.users.Where(x => x.Id.Equals((int)item.rPM)).FirstOrDefault();
                 urtl.pmName.Add(pm.firstName);
             }
@@ -108,8 +108,9 @@ namespace IA.Controllers
             Customer_Assingnd_NotAssigned_Projects CA = new Customer_Assingnd_NotAssigned_Projects();
             CA.CustomerData = u;
             var Customer_ID = Convert.ToInt32(Session["ID"]);
-            CA.Assigned = db.project.Where(p => p.customerId == Customer_ID && p.pStatus == 1);
-            CA.NotAssigned = db.project.Where(p => p.customerId == Customer_ID && p.pStatus == 0);
+            CA.pendding = db.project.Where(p => p.customerId == Customer_ID && p.pStatus == 0);
+            CA.Assigned = db.project.Where(p => p.customerId == Customer_ID && p.pStatus == 2);
+            CA.NotAssigned = db.project.Where(p => p.customerId == Customer_ID && p.pStatus == 1);
             return CA;
         }
     }

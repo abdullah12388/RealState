@@ -82,18 +82,18 @@
         @for (int i = 0; i < Model.rtl.Count; i++)
         {
             <div class="row" style="margin-bottom:10px">
-                <div class="col-sm-4" style="margin:auto">
+                <div class="col-sm-8" style="margin:auto">
                     <label>Name: </label>
                     <label>
                         @Html.DisplayFor(model => model.pmName[i])
                     </label>
                 </div>
-                <div class="col-sm-4" style="margin:auto">
+                @*<div class="col-sm-4" style="margin:auto">
                     <label>Project: </label>
                     <label>
                         @Html.DisplayFor(model => model.proName[i])
                     </label>
-                </div>
+                </div>*@
                 <div class="col-sm-2">
                     <button class="btn btn-success">@Html.ActionLink("Accept", "Accept", "TeamLeader", new { id = Model.rtl[i].Id }, null)</button>
                 </div>

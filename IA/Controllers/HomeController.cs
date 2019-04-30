@@ -32,6 +32,7 @@ namespace IA.Controllers
                     };
                     return View("Customer", proList_pro);
                 }
+                ViewBag.projects = db.project.Where(x=>x.pStatus == 1).ToList();
                 return View("Users");
             }
             else

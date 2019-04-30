@@ -23,14 +23,26 @@
                 <div class="col-lg-1">@Html.DisplayFor(model => model[i].pArea)</div>
                 @if (Model[i].pStatus == 1)
                 {
-                    <div class="col-lg-2">Assigned</div>
+                    <div class="col-lg-2">Not Assigned</div>
                 }
                 else
                 {
-                    <div class="col-lg-2">Not Assigned</div>
+                    <div class="col-lg-2">Assigned</div>
                 }
 
-                <div class="col-lg-1">@Html.DisplayFor(model => model[i].progress)</div>
+                @if (Model[i].progress == 0)
+                {
+                    <div class="col-lg-1">Not Assigned</div>
+                }
+                else if(Model[i].progress == 1)
+                {
+                    <div class="col-lg-2">In Progress</div>
+                }
+                else
+                {
+                    <div class="col-lg-2">Delivered</div>
+                }
+                @*<div class="col-lg-1">@Html.DisplayFor(model => model[i].progress)</div>*@
                 <div class="col-lg-1">@Html.ActionLink("Update", "UpdateProjectView", "Admin", new { id = Model[i].Id }, null)</div>
                 <div class="col-lg-1">@Html.ActionLink("Delete", "DeleteProject", "Admin", new { id = Model[i].Id }, null)</div>
             </div>

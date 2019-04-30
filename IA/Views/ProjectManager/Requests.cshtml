@@ -1,0 +1,27 @@
+﻿@model List<IA.Models.Req_proj>
+
+<div class="row">
+    @*current and history columns*@
+<div class="col-sm-12" style="height:300px;overflow:auto">
+    <h4 style="text-align:center;font-weight:bold;border-bottom:solid 3px black;">Current Requests</h4>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <div class="row" style="margin-bottom:10px">
+            <div class="col-sm-3" style="margin:auto">
+                <label>Project: </label>
+            </div>
+            <div class="col-sm-3" style="margin:auto">
+                <label>
+                    @Html.DisplayFor(model => model[i].Project.pName)
+                </label>
+            </div>
+            <div class="col-sm-3" style="text-align:center">
+                <button class="btn btn-success">@Html.ActionLink("Accept", "Accept", "ProjectManager", new { id = Model[i].Id }, null)</button>
+            </div>
+            <div class="col-sm-3" style="text-align:center">
+                <button class="btn btn-danger">@Html.ActionLink("Reject", "Reject", "ProjectManager", new { id = Model[i].Id }, null)</button>
+            </div>
+        </div>
+    }
+</div>
+</div>

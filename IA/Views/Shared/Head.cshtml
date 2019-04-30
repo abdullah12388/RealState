@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IA.Models.users
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -39,15 +40,15 @@
                         <div class="col-12 col-md-10 d-none d-xl-block">
                             <nav class="site-navigation position-relative text-right" role="navigation">
                                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                                    <li><a href="#home-section" class="nav-link active">Home</a></li>
-                                    <li><a href="#about-section" class="nav-link">About</a></li>
-                                    <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                                    <li><a class="nav-link active">@Html.ActionLink("Home", "Index", "Home")</a></li>
+                                    <li><a class="nav-link">About</a></li>
+                                    <li><a class="nav-link">Contact</a></li>
                                     @if (Session["ID"] != null)
                                     {
-                                        <li><a>@Html.ActionLink("Profile", "Index", "Profile") </a></li>
+                                        <li><a>@Html.ActionLink("Profile", "Index", "Profile")</a></li>
 
                                         <li><a>@Html.ActionLink("Logout", "Logout", "Home") </a></li>
-                                        <li><a class="nav-link">    Welcome  @Session["ID"] </a></li>
+                                        <li><a class="nav-link">    Welcome  @Html.DisplayFor(model => model.firstName) </a></li>
                                     }
                                     else
                                     {

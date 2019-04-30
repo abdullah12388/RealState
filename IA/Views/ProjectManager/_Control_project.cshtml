@@ -10,7 +10,10 @@
         <th>Description</th>
         <th>Area</th>
         <th>Progress</th>
+        <th>Start</th>
+        <th>End</th>
     </tr>
+    @{ int i = 0;}
     @foreach (var item in Model)
     {
         <tr>
@@ -23,17 +26,20 @@
             <td>@Html.DisplayFor(modelItem => item.pDescription)</td>
             <td>@Html.DisplayFor(modelItem => item.pArea)</td>
             <td>
-                @if (Convert.ToInt32(item.progress) == 2)
-                {<h4>In-Progress</h4>}
-                else{<h4>Delivried</h4>}
+                @if (Convert.ToInt32(item.progress) == 1)
+                {<label>In Progress</label>}
+                else {<label>Delivried</label>}
             </td>
+            <td>@ViewBag.sc[i].Start</td>
+            <td>@ViewBag.sc[i].End</td>
+            @{i = i + 1;}
             <td>
                 @{ int ID = Convert.ToInt32(item.Id);}
-                <input type="button" class="btn btn-primary btn-sm" id="edit" onclick="pass(@ID)" value="Edit" />
-                <input type="button" class="btn btn-primary btn-sm" id="del" onclick="cancel(@ID)" value="Cancel" />
+                <input type="button" class="btn btn-primary btn-sm" style="margin-bottom:2px;" id="edit" onclick="pass(@ID)" value="Edit" />
+                <input type="button" class="btn btn-primary btn-sm" style="margin-top:2px;" id="del" onclick="cancel(@ID)" value="Cancel" />
             </td>
         </tr>
-    }
+     }
 </table>
 
 <script type="text/javascript">

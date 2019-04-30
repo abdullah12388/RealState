@@ -15,6 +15,10 @@ namespace IA.Controllers
         {
             var reqTeam = db.Req_Team.Where(x => x.Id.Equals(id)).FirstOrDefault();
             reqTeam.rStatue = 1;
+            teamMember tm = new teamMember();
+            tm.teamId = (int)reqTeam.tId;
+            tm.userId = (int)Session["ID"];
+            tm.Statue = 1;
             db.SaveChanges();
             return RedirectToAction("Index", "Profile");
         }

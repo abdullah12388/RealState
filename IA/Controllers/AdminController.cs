@@ -83,10 +83,9 @@ namespace IA.Controllers
 
         public ActionResult ProjectView()
         {
-            List<projects> projects = db.project.Where(x => x.Id > 0).ToList();
+            List<projects> projects = db.project.Where(x => x.Id > 0 && x.pStatus > 0).ToList();
             return PartialView("DeleteProject", projects);
         }
-
 
         public ActionResult AddProject(projects project,string id = "1")
         {
@@ -118,6 +117,26 @@ namespace IA.Controllers
             projectindb.pSalary = project.pSalary;
             projectindb.pArea = project.pArea;
             projectindb.pDescription = project.pDescription;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Profile");
+        }
+
+        public ActionResult PenddingProjectsView()
+        {
+            List<projects> projects = db.project.Where(x => x.Id > 0 && x.pStatus == 0).ToList();
+            return PartialView("PenddingProjects", projects);
+        }
+        public ActionResult AcceptProject(int id)
+        {
+            var project = db.project.Single(x => x.Id == id);
+            project.pStatus = 1;
+            db.SaveChanges();
+            return RedirectToAction("Index","Profile");
+        }
+        public ActionResult RejectProject(int id)
+        {
+            var project = db.project.Single(x => x.Id == id);
+            db.project.Remove(project);
             db.SaveChanges();
             return RedirectToAction("Index", "Profile");
         }

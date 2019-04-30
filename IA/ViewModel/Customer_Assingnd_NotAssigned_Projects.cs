@@ -9,6 +9,7 @@ namespace IA.Models
     {
         public IEnumerable<projects> Assigned { get; set; }
         public IEnumerable<projects> NotAssigned { get; set; }
+        public IEnumerable<projects> pendding { get; set; }
         public users CustomerData { get; set; }
     }
 }

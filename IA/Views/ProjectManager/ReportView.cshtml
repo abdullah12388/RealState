@@ -1,0 +1,26 @@
+﻿@model List<IA.Models.users>
+
+<div class="col-sm-12">
+    <h4 style="text-align:center;margin-bottom:30px">Send Report To Customer</h4>
+    @using (Html.BeginForm("Report", "ProjectManager", FormMethod.Post, new { role = "form" }))
+            {
+        <div class="row">
+            <div class="col-sm-4">
+                <select class="form-control" name="custid" required style="margin-bottom:10px">
+                    <option value="" selected disabled>choose Customer</option>
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.Id">@item.firstName @item.lastName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="text" class="form-control" name="report" id="formGroupExampleInput" placeholder="Report">
+            </div>
+            <div class="col-sm-4">
+                <input type="submit" id="submit" value="Send Request" style="margin:auto">
+            </div>
+        </div>
+    }
+</div>
+

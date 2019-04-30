@@ -4,10 +4,26 @@
     Layout = "~/Views/Shared/_Home.cshtml";
 }
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-12">
         <div class="p-4 mb-3 bg-white">
             <p class="mb-0 font-weight-bold">All Current Not assigned projects</p>
-            <!--Data of Projert Is here for Every User-->
+            @foreach (var project in ViewBag.projects)
+            {
+                <div class="property horizontal d-flex">
+                    <div class="prop-details p-3">
+                        <div><a href="#"><strong class="price">@project.pName</strong></a></div>
+                        <div class="">
+                            <h3>Salary :<strong style="color: black">@project.pSalary</strong></h3>
+                            <h3>Discription :<strong style="color: black">@project.pDescription</strong></h3>
+                            <h3>Area :<strong style="color: black">@project.pArea</strong></h3>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            }
+
         </div>
     </div>
+
 </div>
