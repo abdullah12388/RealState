@@ -1,4 +1,4 @@
-﻿@model IA.Models.users
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +48,7 @@
                                         <li><a>@Html.ActionLink("Profile", "Index", "Profile")</a></li>
 
                                         <li><a>@Html.ActionLink("Logout", "Logout", "Home") </a></li>
-                                        <li><a class="nav-link">    Welcome  @Html.DisplayFor(model => model.firstName) </a></li>
+                                        <li><a class="nav-link">    Welcome @Session["firstName"] </a></li>
                                     }
                                     else
                                     {
