@@ -15,12 +15,24 @@ namespace IA.Controllers
         {
             var reqTeam = db.Req_Team.Where(x => x.Id.Equals(id)).FirstOrDefault();
             reqTeam.rStatue = 1;
+            teamMember tm = new teamMember();
+            tm.teamId = (int)reqTeam.tId;
+            tm.userId = (int)Session["ID"];
+            tm.Statue = 1;
             db.SaveChanges();
             return RedirectToAction("Index", "Profile");
         }
         public ActionResult Reject(int id)
         {
             var reqTeam = db.Req_Team.Where(x => x.Id.Equals(id)).FirstOrDefault();
+            reqTeam.rStatue = 2;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Profile");
+        }
+        public ActionResult Delete(int id)
+        {
+            int jeid = (int)Session["ID"];
+            var reqTeam = db.Req_Team.Single(x => x.proId == id && x.rTL == jeid);
             reqTeam.rStatue = 2;
             db.SaveChanges();
             return RedirectToAction("Index", "Profile");
@@ -64,6 +76,24 @@ namespace IA.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Profile");
             }
+            return RedirectToAction("Index", "Profile");
+        }
+        public ActionResult feedback(string proId, string jeId,string rate,string feedback)
+        {
+            int pid = int.Parse(proId);
+            int jid = int.Parse(jeId);
+            int pm = (int)Session["ID"];
+            int i = int.Parse(proId);
+            int r = int.Parse(rate);
+            var p = db.project.Where(x => x.Id == i).FirstOrDefault();
+            Feedback fb = new Feedback();
+            fb.tl = (int)Session["ID"];
+            fb.je = int.Parse(jeId);
+            fb.pro = p.Id;
+            fb.rate = r;
+            fb.feedback = feedback;
+            db.Feedback.Add(fb);
+            db.SaveChanges();
             return RedirectToAction("Index", "Profile");
         }
     }

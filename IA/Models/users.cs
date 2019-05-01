@@ -66,7 +66,7 @@ namespace IA.Models
         //public virtual ICollection<Req_Team> rPM { get; set; }
 
         public virtual ICollection<team> Teams { get; set; }
-
+        //public virtual ICollection<Feedback> Feedback { get; set; }
         public virtual ICollection<teamMember> Team_member { get; set; }
 
     }

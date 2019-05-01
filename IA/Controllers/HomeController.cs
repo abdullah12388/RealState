@@ -8,7 +8,7 @@ using System.Data.Entity;
 using IA.Models;
 using System.Net;
 using System.IO;
-using IA.ViewModel;
+
 namespace IA.Controllers
 {
     public class HomeController : Controller
@@ -32,6 +32,7 @@ namespace IA.Controllers
                     };
                     return View("Customer", proList_pro);
                 }
+                ViewBag.projects = db.project.Where(x=>x.pStatus == 1).ToList();
                 return View("Users");
             }
             else
@@ -77,7 +78,7 @@ namespace IA.Controllers
                 ViewBag.User_Types = db.userType.Where(x => x.userTypeId > 1).ToList();
                 return View("Index", usr);
             }
-}
+        }
 
         [HttpPost]
         public ActionResult Login(users usr)

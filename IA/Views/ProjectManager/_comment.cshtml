@@ -1,0 +1,38 @@
+﻿
+@model IA.Models.Comments
+@using (Html.BeginForm("AddComment", "ProjectManager", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Comments</h4>
+        <hr />
+        <div class="form-group">
+            <h4> Project Name </h4>
+            <div class="col-md-8">
+                <select class="form-control" name="pid" required style="margin-bottom:10px">
+                    <option value="" selected disabled>choose project</option>
+                    @foreach (var item in ViewBag.Id)
+                    {
+                        <option value="@item.Id">@item.pName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.comment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.comment, 10, 60, new { @class = "form-control required", style = "max-width:75% !important;" })
+            </div>
+        </div>
+
+        <!--Textarea with icon prefix-->
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

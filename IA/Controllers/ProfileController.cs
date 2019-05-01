@@ -14,7 +14,6 @@ namespace IA.Controllers
         // GET: Profile
         public ActionResult Index()
         {
-            
             if (Session["ID"] != null)
             {
                 users users = db.users.Find(Session["ID"]);
@@ -25,14 +24,28 @@ namespace IA.Controllers
                 }
                 else if (users.userTypeId.Equals(4))
                 {
+                    int ID = Convert.ToInt32(Session["ID"]);
+                    ViewBag.Exp = db.Experience.Where(x => x.userId == ID).ToList();
                     user_req_team urtobject = TL(users);
                     return View("teamLeader", urtobject);
                 }
                 else if (users.userTypeId.Equals(3))
                 {
+                    return View("projectManager", users);
+                }
+
+                else if (users.userTypeId.Equals(5))
+                {
                     int ID = Convert.ToInt32(Session["ID"]);
                     ViewBag.Exp = db.Experience.Where(x => x.userId == ID).ToList();
-                    return View("projectManager",users);
+                    user_req_team urtobject = TL(users);
+                    return View("JouniorEngineer", urtobject);
+                }
+
+                else if (users.userTypeId.Equals(2))
+                {
+                    Customer_Assingnd_NotAssigned_Projects cm = CANP(users);
+                    return View("Customer", cm);
                 }
                 return View(users);
             }
@@ -49,8 +62,8 @@ namespace IA.Controllers
             urtl.rtl = db.Req_Team.Where(x => x.rTL.Equals(users.Id) && x.rStatue == 0).ToList();
             foreach (var item in urtl.rtl)
             {
-                var pro = db.project.Where(x => x.Id.Equals((int)item.proId)).FirstOrDefault();
-                urtl.proName.Add(pro.pName);
+                //var pro = db.project.Where(x => x.Id.Equals((int)item.proId)).FirstOrDefault();
+                //urtl.proName.Add(pro.pName);
                 var pm = db.users.Where(x => x.Id.Equals((int)item.rPM)).FirstOrDefault();
                 urtl.pmName.Add(pm.firstName);
             }
@@ -87,6 +100,18 @@ namespace IA.Controllers
             adminView.AllUsers = db.users.Where(x => x.userTypeId != 1).ToList();
             adminView.AllProjects = db.project.Where(x => x.Id > 0).ToList();
             return adminView;
+        }
+        
+        // Customer Function
+         private Customer_Assingnd_NotAssigned_Projects CANP(users u)
+        {
+            Customer_Assingnd_NotAssigned_Projects CA = new Customer_Assingnd_NotAssigned_Projects();
+            CA.CustomerData = u;
+            var Customer_ID = Convert.ToInt32(Session["ID"]);
+            CA.pendding = db.project.Where(p => p.customerId == Customer_ID && p.pStatus == 0);
+            CA.Assigned = db.project.Where(p => p.customerId == Customer_ID && p.pStatus == 2);
+            CA.NotAssigned = db.project.Where(p => p.customerId == Customer_ID && p.pStatus == 1);
+            return CA;
         }
     }
 }

@@ -1,0 +1,76 @@
+﻿@model List<IA.Models.projects>
+
+<div class="col-sm-12">
+    <h4 style="text-align:center;margin-bottom:30px">Send Report To Customer</h4>
+    @using (Html.BeginForm("Schedule", "ProjectManager", FormMethod.Post, new { role = "form" }))
+            {
+                <div class="row">
+                    <div class="col-sm-12">
+                        <select class="form-control" name="proid" required style="margin-bottom:10px">
+                            <option value="" selected disabled>choose Project</option>
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.Id">@item.pName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <select class="form-control" name="teamid" required style="margin-bottom:10px">
+                            <option value="" selected disabled>choose Team</option>
+                            @foreach (var item in ViewBag.teams)
+                            {
+                                <option value="@item.Id">Team @item.Id</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <input type="text" class="form-control" name="start" id="formGroupExampleInput" placeholder="Start Date">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <input type="text" class="form-control" name="end" id="formGroupExampleInput" placeholder="End Date">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <input type="submit" id="submit" value="Add Schedule" style="margin:auto">
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+            @*<div class="row">
+                    <div class="col-sm-4">
+                        <select class="form-control" name="proid" required style="margin-bottom:10px">
+                            <option value="" selected disabled>choose Project</option>
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.Id">@item.pName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control" name="teamid" required style="margin-bottom:10px">
+                            <option value="" selected disabled>choose Team</option>
+                            @foreach (var item in ViewBag.teams)
+                            {
+                                <option value="@item.Id">Team @item.Id</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <input type="text" class="form-control" name="start" id="formGroupExampleInput" placeholder="Start Date">
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        <input type="text" class="form-control" name="end" id="formGroupExampleInput" placeholder="End Date">
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="submit" id="submit" value="Send Request" style="margin:auto">
+                    </div>
+                </div>*@
+            }
+        </div>

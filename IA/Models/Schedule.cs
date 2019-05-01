@@ -12,9 +12,9 @@ namespace IA.Models
         [Key]
         public int Id { get; set; }
         
-        public DateTime Start { get; set; }
+        public string Start { get; set; }
 
-        public DateTime End { get; set; }
+        public string End { get; set; }
 
         public int Progress { get; set; }
         [ForeignKey("Project")]

@@ -1,0 +1,87 @@
+﻿
+@model IEnumerable<IA.Models.projects>
+
+<table class="table">
+    <tr>
+        <th>Customer Name</th>
+        <th>Team's Id</th>
+        <th>Project Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Area</th>
+        <th>Progress</th>
+        <th>Start</th>
+        <th>End</th>
+    </tr>
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.firstName) @Html.DisplayFor(modelItem => item.Customer.lastName)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.Team.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.pName)</td>
+            <td>@Html.DisplayFor(modelItem => item.pSalary)</td>
+            <td>@Html.DisplayFor(modelItem => item.pDescription)</td>
+            <td>@Html.DisplayFor(modelItem => item.pArea)</td>
+            <td>
+                @if (Convert.ToInt32(item.progress) == 1)
+                {<label>In Progress</label>}
+                else {<label>Delivried</label>}
+            </td>
+            <td>@ViewBag.sc[i].Start</td>
+            <td>@ViewBag.sc[i].End</td>
+            @{i = i + 1;}
+            <td>
+                @{ int ID = Convert.ToInt32(item.Id);}
+                <input type="button" class="btn btn-primary btn-sm" style="margin-bottom:2px;" id="edit" onclick="pass(@ID)" value="Edit" />
+                <input type="button" class="btn btn-primary btn-sm" style="margin-top:2px;" id="del" onclick="cancel(@ID)" value="Cancel" />
+            </td>
+        </tr>
+     }
+</table>
+
+<script type="text/javascript">
+    function pass(variable) {
+        $('#state').empty();
+        var url = '@Url.Action("Edit", "ProjectManager")';
+        $.ajax({
+            url: url,
+            type: 'GET',
+            cache: false,
+            data: { id: variable },
+            success: function (result) {
+                $('#state').html(result);
+            }
+        });
+    }
+    function cancel(variable) {
+        $('#state').empty();
+        var url = '@Url.Action("cancel", "ProjectManager")';
+        $.ajax({
+            url: url,
+            type: 'GET',
+            cache: false,
+            data: { id: variable },
+            success: function (result) {
+                $('#state').html(result);
+            }
+        });
+    }
+    function comment(variable) {
+    $('#state').empty();
+    var url = '@Url.Action("comment", "ProjectManager")';
+    $.ajax({
+        url: url,
+        type: 'GET',
+        cache: false,
+        data: { id: variable },
+        success: function (result) {
+            $('#state').html(result);
+        }
+    });
+    }
+</script>
+
+

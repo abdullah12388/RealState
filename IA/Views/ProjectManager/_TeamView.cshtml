@@ -1,0 +1,86 @@
+﻿@model IA.Models.TeamView
+
+
+<div>
+    <h3 style="text-align: center;">Members</h3>
+    <hr/>
+    <div class="row" style="width:100%;font-size:20px;">
+        <div class="col-lg-4">Team Number</div>
+        <div class="col-lg-5">Member Name</div>
+    </div>
+    <hr/>
+    @foreach (var item in Model.tm)
+    {
+        <div class="row" style="width:100%">
+            <div class="col-lg-4">@item.teamId</div>
+            <div class="col-lg-4">@item.user.firstName</div>
+            <div class="col-lg-4">@Html.ActionLink("Delete", "DeleteMember", "ProjectManager", new { id = item.Id }, null)</div>
+        </div>
+        <hr />
+    }
+</div>
+
+<div>
+    <h3 style="text-align: center;margin-bottom:20px">Add and Delete Teams</h3>
+    <div class="row" style="width:100%">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("DeleteTeam", "ProjectManager", FormMethod.Post, new { role = "form" }))
+            {
+                <div class="row">
+                    <div class="col-sm-6" style="margin:auto">
+                        <select class="form-control" name="teamid" required style="margin-bottom:10px">
+                            <option value="" selected disabled>choose Team</option>
+                            @foreach (var item in Model.ourteam)
+                            {
+                                <option value="@item.Id">Team @item.Id</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="submit" id="submit" value="Delete" style="margin:auto">
+                    </div>
+                    <div class="col-sm-3" style="margin:auto;text-align:center">@Html.ActionLink("Add Team", "AddTeam", "ProjectManager", null, null)</div>
+                </div>
+            }
+        </div>
+    </div>
+    <hr />
+</div>
+
+<div>
+    <h3 style="text-align: center;margin-bottom:20px">Send Request</h3>
+    <div class="row" style="width:100%">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("TeamRequest", "ProjectManager", FormMethod.Post, new { role = "form" }))
+            {
+                <div class="row">
+                    <div class="col-sm-4" style="margin:auto">
+                        <select class="form-control" name="userid" required style="margin-bottom:10px">
+                            <option value="" selected disabled>choose Member</option>
+                            @foreach (var item in Model.users)
+                            {
+                                <option value="@item.Id">@item.firstName @item.lastName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-4" style="margin:auto">
+                        <select class="form-control" name="teamid" required style="margin-bottom:10px">
+                            <option value="" selected disabled>choose Team</option>
+                            @foreach (var item in Model.ourteam)
+                            {
+                                <option value="@item.Id">Team @item.Id</option>
+                            }
+                        </select>
+                        
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="submit" id="submit" value="Send Request" style="margin:auto">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <hr />
+</div>
+
+
