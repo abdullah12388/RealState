@@ -55,7 +55,14 @@ namespace IA.Controllers
             List<schedule> sch = new List<schedule>();
             foreach (var item in project.ToList())
             {
-                sch.Add(db.schedule.Where(x => x.pId == item.Id).FirstOrDefault());
+                var s = db.schedule.Where(x => x.pId == item.Id).FirstOrDefault();
+                if (s == null)
+                {
+                    s = new schedule();
+                    s.Start = "0";
+                    s.End = "0";
+                }
+                sch.Add(s);
             }
             ViewBag.sc = sch;
             ///////////////////////////////////////////////////////////////////

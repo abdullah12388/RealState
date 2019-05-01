@@ -127,15 +127,23 @@ namespace IA.Controllers
 
 
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            var project = _context.project.SingleOrDefault(p => p.Id == id);
-            if (project == null)
+            if (id != null)
             {
-                return HttpNotFound();
+                var project = _context.project.SingleOrDefault(p => p.Id == id);
+                if (project == null)
+                {
+                    return HttpNotFound();
+                }
+                return View("CustomerForm", project);
+            }
+            else {
+                return View("CustomerForm");
             }
 
-            return View("CustomerForm", project);
+
+            
         }
 
     }

@@ -89,6 +89,7 @@ namespace IA.Controllers
                 if (user != null)
                 {
                     Session["ID"] = user.Id;
+                    Session["firstName"] = user.firstName;
                     Session["type"] = user.userTypeId;
                     return RedirectToAction("Index");
                 }

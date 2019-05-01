@@ -234,8 +234,6 @@
     <Content Include="Views\ProjectManager\_TeamView.cshtml" />
     <Content Include="Views\ProjectManager\ReportView.cshtml" />
     <Content Include="Views\ProjectManager\ScheduleView.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
